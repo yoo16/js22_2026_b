@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Selector - Men & Women</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body class="bg-gradient-to-br from-pink-50 via-white to-blue-50 min-h-screen p-10">
+
+    <header class="flex justify-between items-center mb-8">
+        <h1 id="shop-title" class="text-3xl font-bold text-sky-700 tracking-wide">ショップタイトル</h1>
+    </header>
+
+    <!-- ============================= -->
+    <!-- 商品一覧 -->
+    <!-- ============================= -->
+    <section id="product-section" class="mb-10">
+        <h2 class="text-xl font-semibold text-gray-800 mb-3">🛍️ Product List</h2>
+
+        <div class="my-4">
+            <button id="all-filter-btn" class="px-2 py-1 bg-gray-600 text-white rounded-lg">All</button>
+            <button id="men-filter-btn" class="px-2 py-1 bg-sky-600 text-white rounded-lg">Men</button>
+            <button id="women-filter-btn" class="px-2 py-1 bg-pink-600 text-white rounded-lg">Women</button>
+        </div>
+
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div
+                class="product men bg-white rounded-xl shadow cursor-pointer hover:shadow-lg transition transform hover:-translate-y-1">
+                <img src="images/Oxford-Shirt.png" class="rounded-t-md mb-2">
+                <div class="info">
+                    <h3 class="name">Oxford Shirt</h3>
+                    <p class="note">Classic fit for men</p>
+                    <p class="price">¥4,500</p>
+                </div>
+            </div>
+
+            <div
+                class="product women bg-white rounded-xl shadow cursor-pointer hover:shadow-lg transition transform hover:-translate-y-1">
+                <img src="images/Floral-Dress.png" class="rounded-t-md mb-2">
+                <div class="info">
+                    <h3 class="name">Floral Dress</h3>
+                    <p class="note">Elegant spring design</p>
+                    <p class="price">¥6,200</p>
+                </div>
+            </div>
+
+            <div
+                class="product men bg-white rounded-xl shadow cursor-pointer hover:shadow-lg transition transform hover:-translate-y-1">
+                <img src="images/Hoodie.png" class="rounded-t-md mb-2">
+                <div class="info">
+                    <h3 class="name">Hoodie</h3>
+                    <p class="note">Comfort casual wear</p>
+                    <p class="price">¥5,000</p>
+                </div>
+            </div>
+
+            <div
+                class="product women bg-white rounded-xl shadow cursor-pointer hover:shadow-lg transition transform hover:-translate-y-1">
+                <img src="images/Pleated-Skirt.png" class="rounded-t-md mb-2">
+                <div class="info">
+                    <h3 class="name">Pleated Skirt</h3>
+                    <p class="note">Soft and flowy</p>
+                    <p class="price">¥3,800</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- カート一覧 -->
+    <!-- ============================= -->
+    <section id="cart-section">
+        <h2 class="text-xl font-semibold text-gray-800 mb-3">
+            <span class="mr-2">🛒 Your Cart</span>
+            <span id="cart-count" class="bg-sky-600 text-white text-sm px-2 py-1 rounded-full shadow">
+                0
+            </span>
+        </h2>
+        <div class="bg-white p-4 shadow rounded-xl divide-y">
+            <ul id="cart-items" class="my-2">
+                <li class="cart-item flex justify-between p-2">
+                    <span>Oxford Shirt</span>
+                    <span class="price">¥4,500</span>
+                </li>
+                <li class="cart-item flex justify-between p-2">
+                    <span>Floral Dress</span>
+                    <span class="price">¥6,200</span>
+                </li>
+                <li class="cart-item flex justify-between p-2">
+                    <span>Pleated Skirt</span>
+                    <span class="price">¥3,800</span>
+                </li>
+            </ul>
+            <p class="m-2 text-right font-bold text-sky-700">&yen;14,500</p>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
