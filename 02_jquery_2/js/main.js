@@ -34,6 +34,8 @@ $(() => {
     $('#shop-title').html(title);
 
     // TODO: #cart-count に count を表示
+    let itemCount = $(".cart-item").length;
+    $('#cart-count').text(itemCount);
 
     // =============================================
     //  4 メソッド2
