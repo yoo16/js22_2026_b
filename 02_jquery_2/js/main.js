@@ -111,6 +111,7 @@ $(() => {
         $(".product").removeClass("hidden");
 
         // TODO: not(): 男性商品ではない要素を非表示
+        $(".product").not(".men").addClass("hidden");
     });
     document.getElementById("women-filter-btn").addEventListener("click", () => {
         // 全商品を一旦表示
