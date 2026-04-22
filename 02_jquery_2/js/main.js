@@ -8,7 +8,7 @@ $(() => {
     console.log(titleElement);
 
     // TODO: class=cart-item をすべて選択
-    const cartItems = []
+    const cartItems = $('.cart-item')
     console.log(cartItems);
 
     // TODO: .cart-item の数を取得
