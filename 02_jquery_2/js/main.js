@@ -61,8 +61,9 @@ $(() => {
     const infoClass = "p-2";
     $('.product > .info').addClass(infoClass);
 
-    // TODO: 子孫：商品名 class=product .name にクラス追加
+    // TODO: 子孫：商品名 class=product の子孫 .name にクラス追加
     const productNameClass = "font-semibold text-lg";
+    $('.product .name').addClass(productNameClass);
 
     // TODO: 子孫：商品価格 .product .note にクラス追加
     const noteClass = "text-sm text-gray-500";
