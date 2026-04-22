@@ -47,6 +47,7 @@ $(() => {
     $('.men').addClass(menClass)
 
     // TODO: class=women にクラス設定
+    $('.women').addClass(womenClass)
 
     // =============================================
     //  4 親子・子孫関係
