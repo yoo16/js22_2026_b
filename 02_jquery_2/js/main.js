@@ -30,9 +30,10 @@ $(() => {
 
     title = `👕 Spring Apparel <span class='text-sm text-gray-400'>Men & Women Edition</span>`;
     // TODO: id=shop-title のタイトルの設定: html()
+    // document.getElementById("shop-title").innerHTML = title と同じ意味
+    $('#shop-title').html(title);
 
     // TODO: #cart-count に count を表示
-    $('#cart-count').text(count);
 
     // =============================================
     //  4 メソッド2
