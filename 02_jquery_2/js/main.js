@@ -18,12 +18,14 @@ $(() => {
     // =============================================
     // ️2 基本的なメソッド
     // =============================================
-    let title = "";
+    let title = $('#shop-title').text()
+    // document.getElementById("shop-title").textContent と同じ意味
     // TODO: id=shop-title のテキストコンテンツ取得
     console.log("Original title:", title);
 
     title = '👕 Spring Apparel';
     // TODO:  id=shop-title のタイトルの設定: text()
+    $('#shop-title').text(title)
 
     title = `👕 Spring Apparel <span class='text-sm text-gray-400'>Men & Women Edition</span>`;
     // TODO: id=shop-title のタイトルの設定: html()
