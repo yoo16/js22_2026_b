@@ -89,7 +89,8 @@ $(() => {
     const saleDOM = $(saleTag).get(0);
     console.log(saleDOM);
 
-    // TODO: get(): index=1 の商品に saleTag タグを追加
+    // TODO: eq(): index=1 の商品に saleTag タグを追加
+    $(".product").eq(1).append(saleTag);
 
     // TODO: eq(): index=2 の商品（３番目の商品）に newTag タグを追加
     const newTag = "<span class='text-xs bg-pink-200 text-pink-800 px-2 py-1 rounded'>NEW</span>";
