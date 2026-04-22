@@ -59,6 +59,7 @@ $(() => {
     // 商品カードのクラス
     // TODO: 親子：商品情報 .product > .info にクラス追加
     const infoClass = "p-2";
+    $('.product > .info').addClass(infoClass);
 
     // TODO: 子孫：商品名 class=product .name にクラス追加
     const productNameClass = "font-semibold text-lg";
