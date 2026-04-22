@@ -94,6 +94,7 @@ $(() => {
 
     // TODO: eq(): index=2 の商品（３番目の商品）に newTag タグを追加
     const newTag = "<span class='text-xs bg-pink-200 text-pink-800 px-2 py-1 rounded'>NEW</span>";
+    $(".product").eq(2).append(newTag);
 
     // TODO: first(): 最初の商品に newTag を追加
 
