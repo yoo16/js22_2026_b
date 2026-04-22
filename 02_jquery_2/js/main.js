@@ -44,6 +44,7 @@ $(() => {
     const menClass = "bg-sky-100 text-sky-600"
     const womenClass = "bg-pink-100 text-pink-600"
     // TODO: class=men にクラス設定
+    $('.men').addClass(menClass)
 
     // TODO: class=women にクラス設定
 
