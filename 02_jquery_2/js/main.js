@@ -67,9 +67,11 @@ $(() => {
 
     // TODO: 子孫：商品価格 .product .note にクラス追加
     const noteClass = "text-sm text-gray-500";
+    $('.product .note').addClass(noteClass);
 
     // TODO: 子孫：商品価格 .product .price にクラス追加
     const priceClass = "font-bold text-lg";
+    $('.product .price').addClass(priceClass);
 
     // バニラJSの場合
     // document.querySelectorAll('.men').forEach(el => {
