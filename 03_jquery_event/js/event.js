@@ -51,6 +51,8 @@ function updateImage(id) {
     const imagePath = `images/character_${id}.png`;
     // TODO: img タグの src に画像パスを設定: attr();
     $('#character-image').attr('src', imagePath)
+    // バニラJSだと
+    // document.getElementById('character-image').setAttribute('src', imagePath);
 }
 
 // mouseoverイベントハンドラー
