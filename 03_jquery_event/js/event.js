@@ -40,7 +40,7 @@ $('#character-select').on('change', function () {
 
 // #character-list li だとクリックが反応しない
 // TODO: イベントデリゲーション: on('click', 'li', function() {...})
-$('#character-list li').on('click', function () {
+$('#character-list').on('click', 'li', function () {
     // data-character を取得
     const id = $(this).data('character');
     updateImage(id);
