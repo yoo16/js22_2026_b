@@ -22,11 +22,11 @@ $('#input-text').on({
         $("#result-event").text(inputText);
     },
     // TODO: focusイベント
-    "": function () {
+    focus: function () {
         $(this).addClass('bg-blue-100')
     },
     // TODO: blurイベント
-    "": function () {
+    blur: function () {
         $(this).removeClass('bg-blue-100')
     }
 });
@@ -34,7 +34,7 @@ $('#input-text').on({
 // change イベント
 $('#character-select').on('change', function () {
     // TODO: プルダウンで選択された値を取得: $(this).val()
-    const id = 0;
+    const id = $(this).val()
     updateImage(id);
 });
 
@@ -50,7 +50,7 @@ $('#character-list li').on('click', function () {
 function updateImage(id) {
     const imagePath = `images/character_${id}.png`;
     // TODO: img タグの src に画像パスを設定: attr();
-    $('#character-image')
+    $('#character-image').attr('src', imagePath)
 }
 
 // mouseoverイベントハンドラー
