@@ -253,7 +253,7 @@ $(function () {
         selectItem(li);
 
         // TODO: inputタグ type=textを生成
-        const input = $("", {
+        const input = $("<input>", {
             type: "text",
             class: inlineEditClass,
             val: text.text(),
