@@ -56,7 +56,7 @@ $(function () {
 
         // TODO: チェックボックスの生成: type="checkbox"
         const checkbox = $("<input>", {
-            type: "",
+            type: "checkbox",
             "aria-label": "完了",
             class: checkboxClass,
         });
@@ -159,7 +159,7 @@ $(function () {
     $("#btn-append").on("click", function () {
         const element = newItem();
         // TODO: id="item-list" の末尾に追加
-
+        $("#item-list").append(element)
         // メタ情報の更新
         updateMeta();
         // 入力欄をクリアしてフォーカス
