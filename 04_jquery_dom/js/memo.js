@@ -38,10 +38,12 @@ $(function () {
         // 選択状態を保存
         if (selected.is(item)) {
             // TODO: すでに選択中の場合、選択解除: selected = $()
+            selected = $()
         } else {
             // 選択状態を追加
             item.addClass(selectedClass);
             // TODO: 選択状態を保存: selected = item
+            selected = item;
         }
     }
 
