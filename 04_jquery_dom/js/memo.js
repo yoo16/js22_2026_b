@@ -172,7 +172,7 @@ $(function () {
     $("#btn-prepend").on("click", function () {
         const element = newItem();
         // TODO: id="item-list" の先頭に追加
-
+        $("#item-list").prepend(element)
         // メタ情報の更新
         updateMeta();
         // 入力欄をクリアしてフォーカス
