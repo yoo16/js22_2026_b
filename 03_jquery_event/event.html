@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+</head>
+
+<body class="font-sans bg-gradient-to-br from-slate-100 to-slate-200 min-h-screen">
+    <main class="mx-auto flex w-full max-w-5xl flex-col gap-3">
+        <section class="rounded-3xl bg-slate-900 px-6 py-8 text-white shadow-xl shadow-slate-300/40">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-200">jQuery Event</p>
+            <div class="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">Event</h1>
+                    <p class="mt-2 text-sm leading-6 text-slate-300">
+                        jQueryのイベントハンドリング
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2カラムレイアウト -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 左カラム -->
+            <div class="space-y-6">
+
+                <!-- Input / Click / Blur / Focus -->
+                <section class="p-6 bg-white rounded-2xl shadow-md border border-slate-100">
+                    <header class="mb-4 pb-3 border-b border-slate-100">
+                        <h2 class="font-bold text-lg text-slate-800">Input / Click / Blur / Focus イベント</h2>
+                        <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+                            テキストボックスに <span class="font-semibold text-slate-700">入力（input）</span>、
+                            <span class="font-semibold text-slate-700">フォーカス（focus）</span>、
+                            <span class="font-semibold text-slate-700">フォーカスアウト（blur）</span>すると下のメッセージ欄に反映されます。
+                            また<span class="font-semibold text-slate-700">「決定」ボタンをクリック（click）</span>すると入力内容を確定できます。
+                        </p>
+                    </header>
+                    <div class="mb-4 flex flex-col sm:flex-row gap-2">
+                        <input id="input-text" type="text" placeholder="ここに入力..."
+                            class="flex-1 border border-slate-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition">
+                        <button id="click-button"
+                            class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-sm">
+                            決定
+                        </button>
+                    </div>
+                    <div id="result-event"
+                        class="p-3 text-green-700 bg-green-50 border border-green-200 rounded-lg min-h-[3rem] text-sm">
+                    </div>
+                </section>
+
+                <!-- Change -->
+                <section class="p-6 bg-white rounded-2xl shadow-md border border-slate-100">
+                    <header class="mb-4 pb-3 border-b border-slate-100">
+                        <h2 class="font-bold text-lg text-slate-800">Change イベント</h2>
+                        <p class="text-sm text-slate-500 mt-2">プルダウンを変更すると右側の画像が切り替わります</p>
+                    </header>
+                    <select id="character-select"
+                        class="p-2 border border-slate-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                        <option value="1">Character 1</option>
+                        <option value="2">Character 2</option>
+                        <option value="3">Character 3</option>
+                    </select>
+                </section>
+
+                <!-- Click List -->
+                <section class="p-6 bg-white rounded-2xl shadow-md border border-slate-100">
+                    <header class="mb-4 pb-3 border-b border-slate-100">
+                        <h2 class="font-bold text-lg text-slate-800">Click イベント</h2>
+                        <p class="text-sm text-slate-500 mt-2">リストを選択すると右側の画像が切り替わります</p>
+                    </header>
+                    <ul id="character-list" class="space-y-2"></ul>
+                </section>
+
+                <!-- Mouse -->
+                <section class="p-6 bg-white rounded-2xl shadow-md border border-slate-100">
+                    <header class="mb-4 pb-3 border-b border-slate-100">
+                        <h2 class="font-bold text-lg text-slate-800">Mouse イベント</h2>
+                        <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+                            右側の画像にマウスをのせると画像が変わります。<br>
+                            ボタンをクリックするとイベントがOFFになります。
+                        </p>
+                    </header>
+                    <button id="event-off-button"
+                        class="bg-rose-500 hover:bg-rose-600 active:bg-rose-700 text-white px-6 py-2 rounded-lg font-semibold transition shadow-sm">
+                        Event OFF
+                    </button>
+                </section>
+            </div>
+
+            <!-- 右カラム -->
+            <div class="space-y-6">
+                <!-- Change / Click 画像 -->
+                <section class="p-6 bg-white rounded-2xl shadow-md border border-slate-100">
+                    <h3 class="text-sm font-semibold text-slate-500 mb-3 text-center uppercase tracking-wider">
+                        Change / Click 連動
+                    </h3>
+                    <img id="character-image" src="" alt="選択キャラクター" class="w-3/4 mx-auto rounded-lg shadow-sm" />
+                </section>
+
+                <!-- Hover 画像 -->
+                <section class="p-6 bg-white rounded-2xl shadow-md border border-slate-100">
+                    <h3 class="text-sm font-semibold text-slate-500 mb-3 text-center uppercase tracking-wider">
+                        Mouse Hover 連動
+                    </h3>
+                    <img id="hoverBox" src="images/character_4.png" alt="キャラクター1"
+                        class="w-3/4 mx-auto rounded-lg shadow-sm transition hover:shadow-lg" />
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/event.js"></script>
+</body>
+
+</html>
