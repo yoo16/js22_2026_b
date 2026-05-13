@@ -22,8 +22,9 @@ $(function () {
      */
     function updateMeta() {
         // TODO: ul#item-list のliの数を数える
-        const count = 0;
+        const count = $("#item-list li").length;
         // TODO: id=item-count に メモの個数を表示
+        $("#item-count").text(count);
 
         // メモがないときは要素を非表示
         $("#empty-state").toggle(count === 0);
