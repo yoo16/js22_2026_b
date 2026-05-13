@@ -88,12 +88,12 @@ $(function () {
         button.on("click", function (event) {
             // クリックイベントの伝播を停止
             event.stopPropagation();
-            // 選択中のliタグ
+            // 選択中のliタグ: 未選択
             if (selected.is(li)) {
                 selected = $();
             }
             // TODO: liタグの削除
-
+            li.remove()
             updateMeta();
         });
 
