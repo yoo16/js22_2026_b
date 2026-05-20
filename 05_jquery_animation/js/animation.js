@@ -9,26 +9,32 @@ $(function () {
     // id=showBtn がクリックされたとき
     $("#showBtn").on("click", function () {
         // TODO: character_1 を show() で表示
+        character_1.show(500)
     });
     // id=hideBtn がクリックされたとき
     $("#hideBtn").on("click", function () {
         // TODO: character_1 を hide() で非表示
+        character_1.hide(500)
     });
     // id=toggleBtn がクリックされたとき
     $("#toggleBtn").on("click", function () {
         // TODO: character_1 を toggle() でトグル表示
+        character_1.toggle(500)
     });
     // id=fadeInBtn がクリックされたとき
     $("#fadeInBtn").on("click", function () {
         // TODO: character_2 を fadeIn() でフェードイン
+        character_2.fadeIn(500)
     });
     // id=fadeOutBtn がクリックされたとき
     $("#fadeOutBtn").on("click", function () {
         // TODO: character_2 を fadeOut() でフェードアウト
+        character_2.fadeOut(500)
     });
 
     $("#fadeToggleBtn").on("click", function () {
         // TODO: character_2 を fadeToggle() でフェードトグル
+        character_2.fadeToggle(500)
     });
     // id=slideDownBtn がクリックされたとき
     $("#slideDownBtn").on("click", function () {
