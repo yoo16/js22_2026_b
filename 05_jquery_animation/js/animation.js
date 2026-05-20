@@ -98,7 +98,7 @@ $(function () {
         box2.animate( { width: "0px", opacity: 0.1 }, 500)
             .animate( { width: "200px",opacity: 1 }, 500)
             .delay(1000)
-            .animate( { width: "100px", opacity: 1 }, 500);
+            .animate( { width: "100px", opacity: 1 }, 1000);
     });
 
     $("#queueBtn").on("click", function () {
