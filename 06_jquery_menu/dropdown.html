@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe JS - White Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <style>
+        .sub-menu {
+            display: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-700 font-sans tracking-wide">
+
+    <header id="header" class="bg-white text-center py-20 border-b border-stone-200">
+        <h1 class="text-5xl font-bold font-serif text-stone-800">Cafe JS</h1>
+        <p class="mt-4 text-stone-500">Premium Coffee & Organic Sweets</p>
+    </header>
+
+    <nav id="nav" class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur shadow-sm border-b border-stone-100">
+        <div class="max-w-6xl mx-auto">
+            <ul class="flex justify-center md:justify-between text-stone-600 font-medium">
+                <li class="menu relative group flex-1 text-center">
+                    <a href="#hot-drinks"
+                        class="block w-full py-4 hover:text-amber-600 hover:bg-stone-50 transition-colors">Hot
+                        Drinks</a>
+                    <ul
+                        class="sub-menu absolute left-0 w-full bg-white shadow-lg border-t-2 border-amber-500 text-stone-600">
+                        <li><a href="#hot-drinks"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Espresso</a></li>
+                        <li><a href="#hot-drinks"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Cafe Latte</a>
+                        </li>
+                        <li><a href="#hot-drinks"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Herbal Tea</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu relative group flex-1 text-center">
+                    <a href="#iced-drinks"
+                        class="block w-full py-4 hover:text-amber-600 hover:bg-stone-50 transition-colors">Iced
+                        Drinks</a>
+                    <ul
+                        class="sub-menu absolute left-0 w-full bg-white shadow-lg border-t-2 border-amber-500 text-stone-600">
+                        <li><a href="#iced-drinks"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Iced Latte</a>
+                        </li>
+                        <li><a href="#iced-drinks"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Iced Mocha</a>
+                        </li>
+                        <li><a href="#iced-drinks"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Iced
+                                Americano</a></li>
+                    </ul>
+                </li>
+                <li class="menu relative group flex-1 text-center">
+                    <a href="#meals"
+                        class="block w-full py-4 hover:text-amber-600 hover:bg-stone-50 transition-colors">Meals</a>
+                    <ul
+                        class="sub-menu absolute left-0 w-full bg-white shadow-lg border-t-2 border-amber-500 text-stone-600">
+                        <li><a href="#meals"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Grilled
+                                Cheese</a></li>
+                        <li><a href="#meals"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Caesar Salad</a>
+                        </li>
+                        <li><a href="#meals"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Chicken Wrap</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu relative group flex-1 text-center">
+                    <a href="#sweets"
+                        class="block w-full py-4 hover:text-amber-600 hover:bg-stone-50 transition-colors">Sweets</a>
+                    <ul
+                        class="sub-menu absolute left-0 w-full bg-white shadow-lg border-t-2 border-amber-500 text-stone-600">
+                        <li><a href="#sweets"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Cheesecake</a>
+                        </li>
+                        <li><a href="#sweets"
+                                class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Chocolate
+                                Brownie</a></li>
+                        <li><a href="#sweets" class="block px-4 py-3 hover:bg-amber-50 hover:text-amber-700 text-sm">Ice
+                                Cream Sundae</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto bg-white shadow-2xl shadow-stone-200 min-h-screen">
+
+        <section id="information" class="py-16 px-6">
+            <h2 class="text-center text-3xl font-serif font-bold mb-10 text-stone-800 tracking-wider">Information</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-stone-50 rounded-xl p-6 border border-stone-100 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-stone-800">GW営業時間のお知らせ</h3>
+                        <span class="text-xs text-stone-400">2025.04.30</span>
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed">5月3日〜5日は祝日営業（10:00〜18:00）となります。通常営業は5月6日から再開します。
+                    </p>
+                </div>
+
+                <div class="bg-stone-50 rounded-xl p-6 border border-stone-100 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-stone-800">新メニュー「抹茶ラテ」登場</h3>
+                        <span class="text-xs text-stone-400">2025.04.25</span>
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed">5月より「抹茶ラテ」「フレンチトースト」がメニューに加わりました。新緑の季節にぴったりです。</p>
+                </div>
+
+                <div class="bg-stone-50 rounded-xl p-6 border border-stone-100 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-stone-800">ポイントカード開始</h3>
+                        <span class="text-xs text-stone-400">2025.04.15</span>
+                    </div>
+                    <p class="text-stone-600 text-sm leading-relaxed">お買い上げ500円ごとに1ポイント、10ポイントで1ドリンク無料！レジにて配布中です。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hot-drinks" class="py-16 bg-stone-50">
+            <h2 class="text-3xl font-serif font-bold text-center mb-10 text-stone-800">Hot Drinks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 max-w-5xl mx-auto">
+                <div
+                    class="bg-white rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-100 pb-2">Espresso</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">シンプルで力強い一杯。目覚めにぴったりのクラシックなエスプレッソ。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥350</p>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-100 pb-2">Cafe Latte</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">まろやかなミルクとエスプレッソのハーモニー。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥450</p>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-100 pb-2">Herbal Tea</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">リラックス効果抜群。カフェインフリーのハーブティー。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥400</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="iced-drinks" class="py-16 bg-white">
+            <h2 class="text-3xl font-serif font-bold text-center mb-10 text-stone-800">Iced Drinks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 max-w-5xl mx-auto">
+                <div
+                    class="bg-stone-50 rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-200 pb-2">Iced Latte</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">ミルクとエスプレッソを氷で冷やした夏の定番。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥480</p>
+                </div>
+                <div
+                    class="bg-stone-50 rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-200 pb-2">Iced Mocha</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">チョコの甘さとエスプレッソの苦味が絶妙。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥500</p>
+                </div>
+                <div
+                    class="bg-stone-50 rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-200 pb-2">Iced Americano
+                    </h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">スッキリとした飲みごたえ。氷で引き締まった一杯。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥400</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="meals" class="py-16 bg-stone-50">
+            <h2 class="text-3xl font-serif font-bold text-center mb-10 text-stone-800">Meals</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 max-w-5xl mx-auto">
+                <div
+                    class="bg-white rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-100 pb-2">Grilled Cheese
+                    </h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">香ばしく焼き上げたチーズトースト。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥600</p>
+                </div>
+                <div
+                    class="bg-white rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-100 pb-2">Caesar Salad</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">新鮮なレタスとクルトン、特製ドレッシング。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥750</p>
+                </div>
+                <div
+                    class="bg-white rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-100 pb-2">Chicken Wrap</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">ジューシーなグリルチキンのトルティーヤ。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥800</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sweets" class="py-16 bg-white mb-10">
+            <h2 class="text-3xl font-serif font-bold text-center mb-10 text-stone-800">Sweets</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 max-w-5xl mx-auto">
+                <div
+                    class="bg-stone-50 rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-200 pb-2">Cheesecake</h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">濃厚でなめらかな口どけのベイクドチーズケーキ。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥500</p>
+                </div>
+                <div
+                    class="bg-stone-50 rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-200 pb-2">Chocolate Brownie
+                    </h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">しっとり食感に濃厚なカカオが香る逸品。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥480</p>
+                </div>
+                <div
+                    class="bg-stone-50 rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-serif text-stone-800 mb-2 border-b border-stone-200 pb-2">Ice Cream Sundae
+                    </h3>
+                    <p class="text-stone-500 text-sm mb-4 h-10">バニラアイスとチョコソースの贅沢スイーツ。</p>
+                    <p class="text-right text-lg font-bold text-amber-600">¥550</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-stone-400 py-10 text-center text-sm">
+        <p>&copy; 2025 Cafe JS. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/dropdown.js"></script>
+</body>
+
+</html>
