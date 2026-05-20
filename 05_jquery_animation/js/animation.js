@@ -118,14 +118,14 @@ $(function () {
             // キューに追加: queue()
             // コールバックで this を表示して class=hidden を削除
             // 次の処理: next()
-            // $(this)
-            //     .addClass("hidden")
-            //     .delay(i * 300)
-            //     .queue(function (next) {
-            //         $(this).removeClass("hidden");
-            //         next();
-            //     })
-            //     .fadeIn();
+            $(this)
+                .addClass("hidden")
+                .delay(i * 300)
+                .queue(function (next) {
+                    $(this).removeClass("hidden");
+                    next();
+                })
+                .fadeIn();
         });
     });
 
