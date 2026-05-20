@@ -39,14 +39,17 @@ $(function () {
     // id=slideDownBtn がクリックされたとき
     $("#slideDownBtn").on("click", function () {
         // TODO: character_3 を slideDown() でスライド表示
+        character_3.slideDown(500)
     });
 
     $("#slideUpBtn").on("click", function () {
         // TODO: character_3 を slideUp() でスライド非表示
+        character_3.slideUp(500)
     });
 
     $("#slideToggleBtn").on("click", function () {
         // TODO: character_3 を slideToggle() でスライドトグル
+        character_3.slideToggl(500)
     });
     // id=shakeBtn がクリックされたとき
     $("#shakeBtn").on("click", function () {
