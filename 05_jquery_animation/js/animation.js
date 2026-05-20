@@ -95,6 +95,10 @@ $(function () {
         // TODO: box2 を width=0px opacity: 0.1 でアニメーション
         // TODO: box2 を width=200px opacity: 1 でアニメーション
         // TODO: box2 を 1秒待機して width=100px opacity: 1 でアニメーション
+        box2.animate( { width: "0px", opacity: 0.1 }, 500)
+            .animate( { width: "200px",opacity: 1 }, 500)
+            .delay(1000)
+            .animate( { width: "100px", opacity: 1 }, 500);
     });
 
     $("#queueBtn").on("click", function () {
