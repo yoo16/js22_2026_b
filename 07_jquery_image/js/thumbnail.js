@@ -11,19 +11,19 @@ $(function () {
 
     function renderThumbnails() {
         // TODO: サムネイル生成: HTMLテンプレート
-        // const thumbnailHtml = items.map((item, index) => `
-        //     <li>
-        //         <button class="thumbnail thumb-button${index === 0 ? " is-active" : ""}" data-index="${index}" type="button">
-        //             <img class="thumb-image" src="${item.image}" alt="${item.name}">
-        //             <span class="thumb-body">
-        //                 <span class="thumb-title">${item.name}</span>
-        //                 <span class="thumb-meta">¥${item.price.toLocaleString()} / ★ ${item.rating}</span>
-        //             </span>
-        //         </button>
-        //     </li>
-        // `).join("");
+        const thumbnailHtml = items.map((item, index) => `
+            <li>
+                <button class="thumbnail thumb-button${index === 0 ? " is-active" : ""}" data-index="${index}" type="button">
+                    <img class="thumb-image" src="${item.image}" alt="${item.name}">
+                    <span class="thumb-body">
+                        <span class="thumb-title">${item.name}</span>
+                        <span class="thumb-meta">¥${item.price.toLocaleString()} / ★ ${item.rating}</span>
+                    </span>
+                </button>
+            </li>
+        `).join("");
 
-        // $thumbList.append($(thumbnailHtml));
+        $thumbList.append($(thumbnailHtml));
     }
 
     function renderTags(tags) {
@@ -40,24 +40,24 @@ $(function () {
         $(`.thumbnail[data-index="${index}"]`).addClass("is-active");
 
         // TODO: メイン画像切り替え（フェードアウト/フェードイン）
-        // $mainImage.fadeOut(220, function () {
-        //     $mainImage.attr({
-        //         src: item.image,
-        //         alt: item.name,
-        //     }).fadeIn(220);
-        // });
+        $mainImage.fadeOut(220, function () {
+            $mainImage.attr({
+                src: item.image,
+                alt: item.name,
+            }).fadeIn(220);
+        });
 
         // メタデータ更新
-        // $mainTitle.text(item.name);
-        // $mainCopy.text(item.caption);
-        // $mainPrice.text(`¥${item.price.toLocaleString()}`);
-        // $mainCalories.text(`${item.calories} kcal`);
-        // $mainRating.text(`★ ${item.rating}`);
-        // $mainTags.html(renderTags(item.tags));
-        // $mainRecommended.toggle(item.isRecommended);
+        $mainTitle.text(item.name);
+        $mainCopy.text(item.caption);
+        $mainPrice.text(`¥${item.price.toLocaleString()}`);
+        $mainCalories.text(`${item.calories} kcal`);
+        $mainRating.text(`★ ${item.rating}`);
+        $mainTags.html(renderTags(item.tags));
+        $mainRecommended.toggle(item.isRecommended);
     }
 
-    // クリックしたらメイン画像切り替え
+    // クリックしたらメイン画像切り替え: 第２引数はイベントデリゲート用のセレクタ class=thumbnail
     $thumbList.on("click", ".thumbnail", function () {
         const index = Number($(this).data("index"));
         updateMainView(index);
