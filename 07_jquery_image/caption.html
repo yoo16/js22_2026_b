@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Caption</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div class="hero-inner">
+                <h1>Caption Gallery</h1>
+                <p>メニュー一覧としても使えるよう、カードの上で概要を見せつつ、ホバー時に詳細キャプションを重ねる構成にしています。</p>
+            </div>
+        </header>
+        <main class="content-shell">
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Menus</h2>
+                </div>
+                <ul id="image-list" class="card-grid"></ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="data/items.js" defer></script>
+    <script src="js/caption.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Stack View</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="css/stack.css">
+</head>
+
+<body>
+    <div class="stack-page">
+        <header class="stack-hero">
+            <div class="stack-hero-inner">
+                <h1>Stacked Gallery</h1>
+            </div>
+        </header>
+        <main id="main">
+            <section class="stack-panel">
+                <div class="stack-copy">
+                    <h2>メインビジュアルを切り替え</h2>
+                    <div class="stack-actions">
+                        <button id="next-button" class="stack-button alt" type="button">
+                            <span>Transition</span>
+                            <small>CSS</small>
+                        </button>
+                    </div>
+                </div>
+                <div id="image-container" aria-label="stacked">
+                    <div class="stacked-item">
+                        <img class="stacked-image" src="images/item5.jpg" alt="ストロベリーシフォン">
+                    </div>
+                    <div class="stacked-item">
+                        <img class="stacked-image" src="images/item4.jpg" alt="ベリーパンケーキ">
+                    </div>
+                    <div class="stacked-item">
+                        <img class="stacked-image" src="images/item3.jpg" alt="チョコレートパンケーキ">
+                    </div>
+                    <div class="stacked-item">
+                        <img class="stacked-image" src="images/item2.jpg" alt="チョコレートパンケーキ">
+                    </div>
+                    <div class="stacked-item">
+                        <img class="stacked-image" src="images/item1.jpg" alt="ストロベリーチーズケーキ">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/stack.js"></script>
+</body>
+
+</html>

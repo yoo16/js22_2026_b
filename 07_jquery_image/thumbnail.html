@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thumbnail View</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div class="hero-inner">
+                <h1>Cafe JS Gallery</h1>
+                <p>サムネイルから商品を切り替え、画像と商品説明を左右で見比べられるギャラリーです。</p>
+            </div>
+        </header>
+        <main class="content-shell">
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Products</h2>
+                </div>
+                <ul id="thumb-list" class="thumb-list"></ul>
+            </section>
+            <section class="panel">
+                <div class="gallery-layout">
+                    <article class="viewer-card viewer-split">
+                        <div class="viewer-split-grid">
+                            <div class="viewer-media">
+                                <div class="viewer-frame viewer-frame-large">
+                                    <img id="main-image" alt="">
+                                </div>
+                            </div>
+                            <div class="viewer-details">
+                                <div class="viewer-heading">
+                                    <div>
+                                        <div id="main-recommended" class="viewer-badge">おすすめ</div>
+                                        <h3 id="main-title" class="viewer-title"></h3>
+                                        <p id="main-copy" class="viewer-copy"></p>
+                                    </div>
+                                </div>
+
+                                <dl class="viewer-specs">
+                                    <div class="viewer-spec">
+                                        <dt>価格</dt>
+                                        <dd id="main-price">¥</dd>
+                                    </div>
+                                    <div class="viewer-spec">
+                                        <dt>カロリー</dt>
+                                        <dd id="main-calories">kcal</dd>
+                                    </div>
+                                    <div class="viewer-spec">
+                                        <dt>評価</dt>
+                                        <dd id="main-rating">★</dd>
+                                    </div>
+                                </dl>
+
+                                <div class="viewer-tags-panel">
+                                    <h4>タグ</h4>
+                                    <div id="main-tags" class="viewer-tags">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="data/items.js" defer></script>
+    <script src="js/thumbnail.js" defer></script>
+</body>
+
+</html>
