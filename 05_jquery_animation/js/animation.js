@@ -89,6 +89,8 @@ $(function () {
     $("#animateBtn").on("click", function () {
         // TODO: box1 を width=300px height=50px opacity: 0.1 でアニメーション
         // TODO: box1 を width=100px height=100px opacity: 1 でアニメーション
+        box1.animate( { width: "300px", height: "50px", opacity: 0.1 }, 1000)
+            .animate( { width: "100px", height: "100px", opacity: 1 }, 1000)
 
         // TODO: box2 を width=0px opacity: 0.1 でアニメーション
         // TODO: box2 を width=200px opacity: 1 でアニメーション
