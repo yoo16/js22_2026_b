@@ -8,6 +8,7 @@ $(function () {
             // TODO: 自分自身: $(this) の子要素 ul を表示
             // stop() で誤動作防止
             // slideDown() アニメーション
+            $(this).children("ul").stop().slideDown(300)
         },
         function () {
             // TODO: 自分自身: $(this) の子要素 ul を非表示
