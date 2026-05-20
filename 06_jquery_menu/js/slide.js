@@ -10,7 +10,7 @@ $(function () {
         toggleMenu();
     });
     // TODO: メニュー内のリンククリック: id=slide-menu の a
-    $("").on('click', function () {
+    $("#slide-menu a").on('click', function () {
         // メニューを閉じる
         toggleMenu();
     });
