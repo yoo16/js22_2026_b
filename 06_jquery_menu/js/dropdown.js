@@ -14,6 +14,7 @@ $(function () {
             // TODO: 自分自身: $(this) の子要素 ul を非表示
             // stop() で誤動作防止
             // slideUp() アニメーション
+            $(this).children("ul").stop().slideUp(300)
         }
     );
 
