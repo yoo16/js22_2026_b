@@ -22,5 +22,6 @@ $(document).ready(function () {
         const translateY = Math.min(parallaxHeight / 2, scrollY * 0.2) - 200;
         // TODO: $parallaxContent.css()
         // transform: translateY
+        $parallaxContent.css('transform', `translateY(${translateY}px)`);
     });
 });
