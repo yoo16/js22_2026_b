@@ -25,10 +25,10 @@ $(document).ready(function () {
             let current = '';
             // TODO: タイプライターエフェクトの実装
             const interval = setInterval(() => {
-                // current += text[i];
-                // $el.text(current);
-                // i++;
-                // if (i >= text.length) clearInterval(interval);
+                current += text[i];
+                $el.text(current);
+                i++;
+                if (i >= text.length) clearInterval(interval);
             }, 80);
         },
         // TODO: fadeLeftエフェクト
