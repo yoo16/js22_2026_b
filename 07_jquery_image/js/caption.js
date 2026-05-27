@@ -63,7 +63,7 @@ $(function () {
     $imageList.on({
         mouseenter: function () {
             // TODO: 自分の中の .gallery-overlay を探して、マウスが乗ったらフェードイン
-
+            $(this).find('.gallery-overlay').stop().fadeIn(500)
         },
         mouseleave: function () {
             // TODO: 自分の中の .gallery-overlay を探して、マウスが離れたらフェードアウト
