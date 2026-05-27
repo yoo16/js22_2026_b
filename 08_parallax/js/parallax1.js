@@ -3,7 +3,9 @@ $(document).ready(function () {
     const $parallaxContent = $('#parallaxContent');
 
     // TODO: スクロールイベントの監視
-    $(window).on('', function () {
+    // バニラJS: 
+    // window.addEventListener('scroll', function () { ... });
+    $(window).on('scroll', function () {
         // TODO: スクロール位置を取得: $(window).scrollTop()
         const scrollY = 0;
         // TODO: 速度を調整: scrollY * 0.5
