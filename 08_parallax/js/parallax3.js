@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const speed = parseFloat(layer.dataset.speed);
 
             // TODO: data-speed を取得して、transform を設定
-            // layer.style.transform = `translate3d(0, ${-(scrollY * speed)}px, 0)`;
+            layer.style.transform = `translate3d(0, ${-(scrollY * speed)}px, 0)`;
         });
 
         // ヒーロータイトルのフェードアウト + 上方向スライド
         const progress = Math.min(scrollY / hero.offsetHeight, 1);
         // TODO: スクロールの割合（progress）に応じて、transform と opacity を設定
-        // heroTitle.style.transform = `translate(-50%, calc(-50% - ${scrollY * 0.5}px))`;
-        // heroTitle.style.opacity = 1 - progress * 1.5;
+        heroTitle.style.transform = `translate(-50%, calc(-50% - ${scrollY * 0.5}px))`;
+        heroTitle.style.opacity = 1 - progress * 1.5;
     }
 
     // ====================================
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const speed = parseFloat(bgText.dataset.speedX || 0.3);
         const offset = window.scrollY * speed;
         // TODO: 背景テキストの Y軸方向（Y-axis）に移動距離を計算して、transform を設定
-        // bgText.style.transform = `translateY(-50%) translateX(${-offset}px)`;
+        bgText.style.transform = `translateY(-50%) translateX(${-offset}px)`;
     }
 
     // ====================================
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // スクロール領域に入ったときの処理
             if (relative > 0 && relative < winHeight * 2) {
                 // TODO: カードの上方向への移動距離を計算して、transform を設定
-                // card.style.transform = `translate3d(0, ${-(relative - winHeight) * speed}px, 0)`;
+                card.style.transform = `translate3d(0, ${-(relative - winHeight) * speed}px, 0)`;
             }
         });
     }
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateProgress() {
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         // TODO: スクロール位置に基づいてプログレスバーの幅を設定
-        // progressBar.style.width = `${(window.scrollY / docHeight) * 100}%`;
+        progressBar.style.width = `${(window.scrollY / docHeight) * 100}%`;
     }
 
     // ====================================
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const elTop = el.getBoundingClientRect().top + window.scrollY;
             // TODO: ウィンドウ下端から100px以内に入ったら表示
             if (scrollBottom > elTop + 100) {
-                // el.style.opacity = '1';
-                // el.style.transform = 'translateY(0)';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
             }
         });
     }
