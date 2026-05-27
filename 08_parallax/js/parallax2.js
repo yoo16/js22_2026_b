@@ -61,6 +61,7 @@ $(document).ready(function () {
                     animations[type]($target);
                 }
                 // TODO: 監視を解除 （１度きりのエフェクトにしたい場合）: unobserve(entry.target)
+                observer.unobserve(entry.target);
             }
         });
         // 領域境界調整
