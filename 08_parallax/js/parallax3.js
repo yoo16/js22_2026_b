@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // フェードイン要素の初期スタイル
     fadeUpElements.forEach(el => {
         // TODO: スタイルで opacity: 0, transition: all 0.8s ease-out 
-        // el.style.opacity   = '0';
-        // el.style.transform = 'translateY(40px)';
-        // el.style.transition= 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        el.style.opacity   = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition= 'opacity 0.8s ease-out, transform 0.8s ease-out';
     });
 
     // ====================================
