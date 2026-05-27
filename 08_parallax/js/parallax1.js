@@ -7,12 +7,12 @@ $(document).ready(function () {
     // window.addEventListener('scroll', function () { ... });
     $(window).on('scroll', function () {
         // TODO: スクロール位置を取得: $(window).scrollTop()
-        const scrollY = 0;
+        const scrollY = $(window).scrollTop();
         // TODO: 速度を調整: scrollY * 0.5
-        const speed = 0;
+        const speed = scrollY * 0.5;
 
         // TODO: パララックス対象の高さを取得: $parallax.outerHeight()
-        const parallaxHeight = 0;
+        const parallaxHeight = $parallax.outerHeight();
 
         // TODO: 背景画像を移動: $parallax.css()
         // background-position-y: -speed + 'px'
