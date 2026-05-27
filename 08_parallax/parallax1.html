@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Coffee | Parallax</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/parallax1.css">
+</head>
+
+<body>
+
+    <section
+        class="relative h-screen flex flex-col items-center justify-center bg-stone-900 text-white overflow-hidden">
+        <div class="z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-light tracking-widest mb-4">MOMENT</h1>
+            <p class="text-stone-400 tracking-widest uppercase text-sm">Fine Coffee & Pastry</p>
+        </div>
+        <div class="absolute inset-0 opacity-40 bg-[url('images/cafe-shop-2.avif')] bg-cover bg-center">
+        </div>
+    </section>
+
+    <section id="parallax" class="parallax-bg h-screen relative flex items-center justify-center">
+        <div class="absolute inset-0 bg-white/20"></div>
+        <div id="parallaxContent"
+            class="relative z-10 text-white text-xl md:text-3xl font-medium tracking-widest drop-shadow-lg">
+            心ほどける、甘くて香ばしいブレイクタイム
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-light mb-8 tracking-widest border-b border-stone-200 pb-4 inline-block">Our Story</h2>
+        <p class="leading-relaxed text-stone-600 mb-12">
+            厳選された豆と、職人の手によるお菓子。<br>
+            忙しい日常の手を止めて、自分を愛でる時間を提供します。
+        </p>
+    </section>
+
+    <section class="bg-stone-100 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-light mb-16 text-center tracking-widest">Selected Menu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold mb-2">Dark Roast</h3>
+                    <p class="text-sm text-stone-500">深煎りのコクと香り</p>
+                </div>
+                <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold mb-2">Seasonal Tart</h3>
+                    <p class="text-sm text-stone-500">旬の果実をふんだんに</p>
+                </div>
+                <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold mb-2">Cafe Latte</h3>
+                    <p class="text-sm text-stone-500">きめ細やかなミルクの甘み</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/parallax1.js"></script>
+</body>
+
+</html>
