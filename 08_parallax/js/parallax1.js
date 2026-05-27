@@ -23,5 +23,9 @@ $(document).ready(function () {
         // TODO: $parallaxContent.css()
         // transform: translateY
         $parallaxContent.css('transform', `translateY(${translateY}px)`);
+
+        // 拡大・縮小
+        const scale = 1 + Math.min(0.5, scrollY / parallaxHeight);
+        $parallaxContent.css('transform', `translateY(${translateY}px) scale(${scale})`);
     });
 });
