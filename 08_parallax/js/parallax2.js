@@ -29,7 +29,7 @@ $(document).ready(function () {
                 $el.text(current);
                 i++;
                 if (i >= text.length) clearInterval(interval);
-            }, 80);
+            }, 100);
         },
         // TODO: fadeLeftエフェクト
         slideLeft: ($el) => {
