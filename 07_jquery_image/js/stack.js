@@ -11,9 +11,10 @@ function stackAnimation() {
     // id=image-container の子 class=stacked-item のスタックリスト取得（画像リスト）
     const images = $('#image-container').children('.stacked-item');
     // TODO: 最上位のスタック取得: last()
-    const topImage = {};
+    const topImage = images.last();
 
     // TODO: フェードアウト: class=swipe-out
+    topImage.addClass('swipe-out');
 
     // 移動終了後の処理
     // CSSアニメーションが終わったら実行（1度だけ）
