@@ -2,19 +2,19 @@ $(document).ready(function () {
     const animations = {
         // TODO: fadeInエフェクト
         fadeIn: ($el) => {
-            // $el.css({ transform: 'translateY(30px)', opacity: 0, visibility: 'visible' })
-            //     .animate({ opacity: 1 }, {
-            //         duration: 1000,
-            //         step: function (now) {
-            //             const y = 30 * (1 - now);
-            //             $(this).css('transform', `translateY(${y}px)`);
-            //         }
-            //     });
+            $el.css({ transform: 'translateY(30px)', opacity: 0, visibility: 'visible' })
+                .animate({ opacity: 1 }, {
+                    duration: 1000,
+                    step: function (now) {
+                        const y = 30 * (1 - now);
+                        $(this).css('transform', `translateY(${y}px)`);
+                    }
+                });
         },
         // TODO: slideInエフェクト
         slideIn: ($el) => {
-            // $el.css({ width: '0%', opacity: 0, visibility: 'visible' })
-            //     .animate({ width: '100%', opacity: 1 }, 1200);
+            $el.css({ width: '0%', opacity: 0, visibility: 'visible' })
+                .animate({ width: '100%', opacity: 1 }, 1200);
         },
         typewriter: ($el) => {
             // 現在のテキストを取得
@@ -33,15 +33,15 @@ $(document).ready(function () {
         },
         // TODO: fadeLeftエフェクト
         slideLeft: ($el) => {
-            // const startX = 80;
-            // $el.css({ transform: `translateX(${startX}px)`, opacity: 0, visibility: 'visible' })
-            //     .animate({ opacity: 1 }, {
-            //         duration: 1000,
-            //         step: function (now) {
-            //             const x = startX * (1 - now);
-            //             $(this).css('transform', `translateX(${x}px)`);
-            //         }
-            //     });
+            const startX = 80;
+            $el.css({ transform: `translateX(${startX}px)`, opacity: 0, visibility: 'visible' })
+                .animate({ opacity: 1 }, {
+                    duration: 1000,
+                    step: function (now) {
+                        const x = startX * (1 - now);
+                        $(this).css('transform', `translateX(${x}px)`);
+                    }
+                });
         }
     };
 
@@ -53,11 +53,12 @@ $(document).ready(function () {
             if (entry.isIntersecting) {
                 const $target = $(entry.target);
                 // TODO: data-animate 取得
-                const type = "";
+                const type = $target.data('animate');
                 if (animations[type]) {
                     // クラスを削除してからアニメーション開始
                     $target.removeClass('animate-init');
                     // TODO: アニメーションの実行: animations[type]($target);
+                    animations[type]($target);
                 }
                 // TODO: 監視を解除 （１度きりのエフェクトにしたい場合）: unobserve(entry.target)
             }
