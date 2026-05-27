@@ -20,7 +20,7 @@ function stackAnimation() {
     // CSSアニメーションが終わったら実行（1度だけ）
     topImage.one('transitionend', function () {
         // TODO: topImage を先頭に移動: prependTo()
-
+        topImage.prependTo('#image-container');
         // スライドインアニメーション
         swipeIn();
     });
