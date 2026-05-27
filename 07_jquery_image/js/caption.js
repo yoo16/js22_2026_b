@@ -67,7 +67,7 @@ $(function () {
         },
         mouseleave: function () {
             // TODO: 自分の中の .gallery-overlay を探して、マウスが離れたらフェードアウト
-
+            $(this).find('.gallery-overlay').stop().fadeOut(500)
         }
     }, 'li');
 
