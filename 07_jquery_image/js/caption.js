@@ -45,9 +45,10 @@ $(function () {
         // 画像が読み込み終了したら、ローディングアイコンをフェードアウト、画像をフェードイン
         $('.item').on('load', function () {
             // TODO: siblings() で .loading を探してフェードアウト
+            $(this).siblings('.loading').fadeOut();
 
             // TODO: 画像をフェードイン
-
+            $(this).fadeIn(500);
         });
 
         // 既に読み込まれている画像がある場合
