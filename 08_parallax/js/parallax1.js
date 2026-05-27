@@ -16,6 +16,7 @@ $(document).ready(function () {
 
         // TODO: 背景画像を移動: $parallax.css()
         // background-position-y: -speed + 'px'
+        $parallax.css('background-position-y', -speed + 'px');
 
         // 文字コンテンツの移動（スクロールに合わせてゆっくり追従）
         const translateY = Math.min(parallaxHeight / 2, scrollY * 0.2) - 200;
