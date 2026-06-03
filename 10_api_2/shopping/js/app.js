@@ -44,7 +44,7 @@ function renderProducts(products) {
     grid.innerHTML = products.map(p => `
         <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition cursor-pointer product-card" data-id="${p.id}">
             <div class="h-48 p-4 flex items-center justify-center">
-                <img src="" alt="${p.title}" class="max-h-full object-contain">
+                <img src="${p.image}" alt="${p.title}" class="max-h-full object-contain">
             </div>
             <div class="p-4 border-t">
                 <span class="text-xs text-sky-500 font-semibold uppercase">カテゴリ</span>
