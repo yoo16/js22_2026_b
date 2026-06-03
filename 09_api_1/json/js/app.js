@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadUser() {
         try {
             errorElement.textContent = '';
+            // TODO: API の URL を指定
+            const API_URL = './data/users.json';
+
             // TODO: JSONファイルをフェッチして、ユーザ情報を取得
             const response = {};
             // TODO: 非同期 で JSONデータをJavaScriptオブジェクトに変換: response.json() を使用
