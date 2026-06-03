@@ -103,7 +103,7 @@ function showDetail(productId) {
 async function fetchInitialCart() {
     try {
         // TODO: カート情報APIのURLを指定: api/cart/get.php
-        const uri = "";
+        const uri = "api/cart/get.php";
         // GETリクエストで現在のカート情報を取得: fetchAPI
         const response = await fetch(uri);
         // JSON形式でレスポンスを取得: json()
