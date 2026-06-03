@@ -9,10 +9,10 @@ xhr.open('GET', API_URL, true)
 //  XHRリクエスト（非同期）:onload()
 xhr.onload = function () {
     // TODO: レスポンスの処理:ステータスコード: xhr.status === 200 なら成功、そうでなければ失敗
-    if (false) {
+    if (xhr.status === 200) {
         try {
             // TODO: レスポンスの処理:JSON.parse() で responseText をオブジェクトに変換
-            const users = {};
+            const users = JSON.parse(xhr.responseText)
             renderUsers(users);
         } catch (e) {
             showError('データの解析に失敗しました。');
@@ -27,6 +27,7 @@ xhr.onerror = function () {
 };
 
 // TODO: XHRリクエスト（非同期）:send()
+xhr.send()
 
 function renderUsers(users) {
     resultDiv.innerHTML = ''; // クリア
