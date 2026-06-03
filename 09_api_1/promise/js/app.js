@@ -21,10 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function loadQuoteEntries() {
         // 直列処理
-        const quotes = await fetchJson("./data/quotes.json");   // 1秒待つ
-        const authors = await fetchJson("./data/authors.json"); // さらに1秒待つ
+        // const quotes = await fetchJson("./data/quotes.json");   // 少し待つ
+        // const authors = await fetchJson("./data/authors.json"); // 少し待つ
         // TODO: 並列処理 Promise.all() で fetchJson() でデータ取得
-        // const [quotes, authors] = [];
+        const [quotes, authors] = await Promise.all([
+            fetchJson("./data/quotes.json"),
+            fetchJson("./data/authors.json")
+        ]);
 
         // quotes を繰り返し
         quoteEntries = quotes.map(function (quote) {
