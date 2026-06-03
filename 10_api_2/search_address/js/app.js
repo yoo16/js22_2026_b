@@ -73,11 +73,12 @@ const searchHandler = async () => {
         const data = await searchAddress(zipcode);
         
         if (data && data.results) {
+            // 最初のデータを取得: index = 0
             const results = data.results[0];
             // TODO: value に都道府県コード設定: prefcode
-            document.getElementById('prefecture').value = "";
+            document.getElementById('prefecture').value = results.prefcode
             // TODO: テキストに住所設定: address2, address3
-            document.getElementById('city').value = "";
+            document.getElementById('city').value = results.address2 + results.address3
         } else {
             errorDisplay.innerHTML = data.message || '住所が見つかりませんでした';
         }
