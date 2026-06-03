@@ -46,12 +46,13 @@ const searchAddress = async (zipcode) => {
     try {
         const query_param = new URLSearchParams({ zipcode: zipcode, })
         // TODO: SEARCH_URI に zipcode を追加
-        const uri = SEARCH_URI;
+        // http://zipcloud.ibsnet.co.jp/api/search?zipcode=1000001
+        const uri = SEARCH_URI + '?' + query_param.toString()
         console.log(uri);
         // TODO: fetch(): 郵便番号検索APIにアクセス（非同期）
-        const response = {}; 
+        const response =  await fetch(uri)
         // TODO: JSONデータを変換（非同期）
-        const data = {};
+        const data = await response.json()
         return data;
     } catch (error) {
         errorDisplay.innerHTML = error;
