@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspirational Quotes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-100 text-slate-900 flex items-center justify-center p-4">
+
+    <div
+        class="w-full max-w-4xl rounded-[2rem] border border-slate-200 bg-white p-8 md:p-12 shadow-2xl overflow-hidden relative backdrop-blur-sm">
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(125,211,252,0.28),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(167,243,208,0.22),_transparent_28%)]">
+        </div>
+        <span class="absolute top-4 left-6 text-8xl text-sky-200/60 font-serif select-none">“</span>
+
+        <header class="relative z-10 text-center mb-10">
+            <p class="text-sm font-semibold text-sky-700">Promise.all Sample</p>
+            <h1 class="mt-3 text-3xl font-extrabold text-slate-900 tracking-tight md:text-4xl">Quotes + Authors</h1>
+            <p class="mt-4 text-sm leading-6 text-slate-600 md:text-base">
+                quotes.json と authors.json を並列で読み込み、1つの表示データにまとめる学習サンプルです。
+            </p>
+            <div class="h-1 w-14 bg-sky-400 mx-auto mt-4 rounded-full"></div>
+        </header>
+
+        <div class="relative z-10 grid gap-8 lg:grid-cols-[1.5fr_0.9fr] lg:items-start">
+            <div class="min-h-[220px] flex flex-col justify-center italic">
+                <div id="loading" class="hidden">
+                    <div class="flex flex-col items-center">
+                        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-sky-400 mb-3"></div>
+                        <p class="text-sky-300 font-medium">JSON を読み込み中...</p>
+                    </div>
+                </div>
+
+                <div id="error"
+                    class="hidden text-center p-4 bg-red-50 text-red-700 rounded-xl font-medium border border-red-200">
+                </div>
+
+                <blockquote id="quote-container" class="text-center group">
+                    <p id="quote"
+                        class="text-left text-xl leading-relaxed font-bold text-slate-800 mb-6 hidden transition-all duration-500">
+                    </p>
+                    <footer id="author"
+                        class="text-sky-300 font-semibold text-right pr-4 hidden transition-all duration-500"></footer>
+                </blockquote>
+            </div>
+
+            <aside id="meta-card"
+                class="hidden rounded-3xl border border-slate-200 bg-slate-50 p-6 text-left shadow-xl">
+                <p id="theme-badge"
+                    class="inline-flex rounded-full bg-sky-400/15 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-sky-200">
+                </p>
+                <h2 id="author-name" class="mt-5 text-2xl font-bold text-slate-900"></h2>
+                <p id="author-role" class="mt-2 text-sm leading-6 text-slate-600"></p>
+                <dl class="mt-6 grid gap-4 text-sm">
+                    <div class="rounded-2xl bg-white p-4 border border-slate-200">
+                        <dt class="text-slate-400">読み込み方法</dt>
+                        <dd class="mt-1 font-semibold text-slate-900">Promise.all()</dd>
+                    </div>
+                    <div class="rounded-2xl bg-white p-4 border border-slate-200">
+                        <dt class="text-slate-400">利用データ</dt>
+                        <dd class="mt-1 font-semibold text-slate-900">quotes.json / authors.json</dd>
+                    </div>
+                </dl>
+            </aside>
+        </div>
+
+        <div class="mt-10 text-center relative z-10">
+            <button id="fetch-quote-button"
+                class="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-slate-950 transition-all duration-200 bg-sky-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-300 hover:bg-sky-200 shadow-lg active:scale-95">
+                <svg class="w-5 h-5 mr-2 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Promise.all で読み込む
+            </button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

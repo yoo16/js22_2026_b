@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Directory | XHR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+    <header class="bg-white border-b border-slate-200 py-6 mb-8">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl font-bold text-slate-800">メンバーリスト</h1>
+            <p class="text-sm text-slate-500">外部JSONデータから非同期取得しています</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <div id="result" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        </div>
+
+        <div id="status" class="hidden text-center py-20">
+            <p class="text-slate-400 animate-pulse">データを読み込み中...</p>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
