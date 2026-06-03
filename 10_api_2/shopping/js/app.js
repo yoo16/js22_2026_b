@@ -47,16 +47,16 @@ function renderProducts(products) {
                 <img src="${p.image}" alt="${p.title}" class="max-h-full object-contain">
             </div>
             <div class="p-4 border-t">
-                <span class="text-xs text-sky-500 font-semibold uppercase">カテゴリ</span>
-                <h2 class="text-sm font-bold text-gray-800 mt-1 line-clamp-2">タイトル</h2>
+                <span class="text-xs text-sky-500 font-semibold uppercase">${p.category}</span>
+                <h2 class="text-sm font-bold text-gray-800 mt-1 line-clamp-2">${p.title}</h2>
                 
                 <div class="flex items-center mt-2">
                     <span class="text-yellow-400 text-xs">★</span>
-                    <span class="text-xs font-bold ml-1">評価</span>
-                    <span class="text-xs text-gray-400 ml-2">(レビュー数)</span>
+                    <span class="text-xs font-bold ml-1">${p.rating.rate}</span>
+                    <span class="text-xs text-gray-400 ml-2">(${p.rating.count} reviews)</span>
                 </div>
 
-                <p class="text-lg font-bold text-gray-900 mt-2">$価格</p>
+                <p class="text-lg font-bold text-gray-900 mt-2">$${p.price}</p>
             </div>
         </div>
     `).join('');
