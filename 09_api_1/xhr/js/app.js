@@ -1,9 +1,10 @@
-const API_URL = './data/users.json';
+const API_URL = './data/users.json';  // http://xxxxxx.com/xxxx/data/users.json
 const resultDiv = document.getElementById('result');
 
 // XHRリクエスト（非同期）:XMLHttpRequestオブジェクトの作成
 const xhr = new XMLHttpRequest();
 // TODO: XHRリクエスト（非同期）:open() : GETリクエストを設定
+xhr.open('GET', API_URL, true)
 
 //  XHRリクエスト（非同期）:onload()
 xhr.onload = function () {
