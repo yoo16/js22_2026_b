@@ -42,7 +42,7 @@ window.initMap = function initMap() {
   });
 
   // TODO: マーカーを作成
-  // marker = createMarker(defaultPlace);
+  marker = createMarker(defaultPlace);
 
   // サンプルスポットを PHP サーバーから取得して地図に表示
   loadSampleSpots();
@@ -95,7 +95,7 @@ function showCurrentLocation() {
 
 // マーカーを移動して情報ウィンドウを開く
 function moveToPlace(place, zoom) {
-  marker.setMap(null);
+  // marker.setMap(null);
   marker = createMarker(place);
   map.setCenter(place.position);
   map.setZoom(zoom);
