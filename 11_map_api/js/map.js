@@ -57,7 +57,7 @@ window.initMap = function initMap() {
   // mapTypeId: 'roadmap'
   map = new google.maps.Map(document.getElementById('map'), {
     center: tokyo,
-    zoom: 1,
+    zoom: 13,
     mapTypeId: 'roadmap',
     mapTypeControl: false,
     streetViewControl: true,
@@ -65,11 +65,11 @@ window.initMap = function initMap() {
   });
 
   // TODO: 初期マーカーの設定
-  // selectedMarker = new google.maps.Marker({
-  //   position: tokyo,
-  //   map,
-  //   title: '東京駅',
-  // });
+  selectedMarker = new google.maps.Marker({
+    position: tokyo,
+    map,
+    title: '東京駅',
+  });
 
   bindEvents();
   showSelectedPoint(tokyo);
@@ -86,7 +86,7 @@ function bindEvents() {
   document.querySelectorAll('.map-type').forEach((button) => {
     button.addEventListener('click', () => {
       // TODO: data-type 属性を使って地図のタイプを切り替える
-      // setMapType(button.dataset.type);
+      setMapType(button.dataset.type);
       setActiveButton('.map-type', button, 'bg-zinc-900');
     });
   });
@@ -113,10 +113,10 @@ function bindEvents() {
 // 地図クリック時の処理
 function handleMapClick(latLng) {
   // TODO: マーカーモード: marker
-  if (activeMode === '') {
+  if (activeMode === 'marker') {
     const position = latLng.toJSON();
-    selectedMarker.setPosition(position);
-    map.panTo(position);
+    selectedMarker.setPosition(position); // マーカーの位置を移動
+    map.panTo(position);  // 地図をクリックした地点に移動
     showSelectedPoint(position);
     return;
   }
