@@ -223,9 +223,9 @@ async function removeItem(productId) {
 
     // TODO: POSTリクエストで商品ID(id = productId)を送信
     const result = await fetch(uri, {
-        method: '',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: "",
+        body: JSON.stringify({ id: productId }),
     });
     // JSON形式でレスポンスを取得
     const data = await result.json();
