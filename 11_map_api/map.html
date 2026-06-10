@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Features Sample</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #map {
+            height: 620px;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-zinc-100 p-6 text-zinc-900">
+    <main class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[360px_1fr]">
+        <aside class="space-y-4">
+            <header class="space-y-2">
+                <p class="text-sm font-bold uppercase tracking-wide text-cyan-700">Google Maps API</p>
+                <h1 class="text-3xl font-bold">Map Display & Drawing</h1>
+            </header>
+
+            <section class="rounded-lg bg-white p-4 shadow">
+                <h2 class="mb-3 text-sm font-bold text-zinc-700">地図表示</h2>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="map-type rounded-md bg-zinc-900 px-3 py-2 text-sm font-bold text-white" data-type="roadmap">2D</button>
+                    <button class="map-type rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold" data-type="satellite">衛星写真</button>
+                    <button class="map-type rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold" data-type="terrain">地形図</button>
+                    <button class="map-type rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold" data-type="hybrid">3D風</button>
+                </div>
+                <select id="style-select" class="mt-3 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm">
+                    <option value="default">標準スタイル</option>
+                    <option value="muted">淡色スタイル</option>
+                    <option value="night">夜間スタイル</option>
+                </select>
+            </section>
+
+            <section class="rounded-lg bg-white p-4 shadow">
+                <h2 class="mb-3 text-sm font-bold text-zinc-700">操作モード</h2>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="draw-mode rounded-md bg-cyan-700 px-3 py-2 text-sm font-bold text-white" data-mode="marker">マーカー</button>
+                    <button class="draw-mode rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold" data-mode="line">線を描く</button>
+                    <button class="draw-mode rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold" data-mode="polygon">範囲を描く</button>
+                    <button class="draw-mode rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold" data-mode="circle">円を描く</button>
+                </div>
+                <div class="mt-3 grid grid-cols-2 gap-2">
+                    <button id="btn-close-polygon" class="rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold">範囲を閉じる</button>
+                    <button id="btn-clear" class="rounded-md border border-zinc-300 px-3 py-2 text-sm font-bold">描画を消去</button>
+                </div>
+                <p id="mode-message" class="mt-3 min-h-5 text-sm text-zinc-600"></p>
+            </section>
+
+            <section class="rounded-lg bg-white p-4 shadow">
+                <h2 class="mb-3 text-sm font-bold text-zinc-700">クリック地点</h2>
+                <div id="point-panel" class="space-y-3 text-sm text-zinc-600">
+                    <p>地図をクリックすると、その地点の緯度・経度と住所を表示します。</p>
+                </div>
+            </section>
+        </aside>
+
+        <section class="overflow-hidden rounded-lg bg-white shadow">
+            <div id="map"></div>
+        </section>
+    </main>
+
+    <script src="js/map.js"></script>
+    <!-- TODO: Google Maps API の読み込み: API キーを設定 -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+        async defer></script>
+</body>
+
+</html>
