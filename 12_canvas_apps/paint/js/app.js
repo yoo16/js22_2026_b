@@ -188,12 +188,12 @@ downloadButton.addEventListener('click', () => {
     const dataURL = canvas.toDataURL('image/png');
 
     // TODO: 一時的なリンク（aタグ）を生成してクリックし、ダウンロードを実行
-    // const a = document.createElement('a');
-    // a.href = dataURL;
-    // a.download = 'canvas.png';
-    // document.body.appendChild(a);
-    // a.click();
-    // document.body.removeChild(a);
+    const a = document.createElement('a');
+    a.href = dataURL;
+    a.download = 'canvas.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 });
 
 // 消しゴムボタン
