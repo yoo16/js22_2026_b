@@ -36,7 +36,7 @@ function spawnFace(event) {
  */
 function animate() {
     // TODO: 現在のコンテキストの描画クリア
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // 顔文字の移動（複数同時）
     faces.forEach(face => {
