@@ -38,6 +38,6 @@ class Face {
     draw() {
         ctx.font = "40px Arial";
         // TODO: 絵文字の描画
-        // ctx.fillText(this.emoji, this.x, this.y);
+        ctx.fillText(this.emoji, this.x, this.y);
     }
 }
