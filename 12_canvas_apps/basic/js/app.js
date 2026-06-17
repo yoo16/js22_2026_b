@@ -1,7 +1,7 @@
 // Canvas 要素を取得し、2D コンテキストを取得
 const canvas = document.getElementById('myCanvas');
 // TODO: 2D コンテキストを取得
-// const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
 
 // Canvas の幅と高さを取得
 const width = canvas.width;
@@ -18,7 +18,7 @@ const textButton = document.getElementById('textButton');
 const clearButton = document.getElementById('clearButton');
 
 /**
- * clearCanvas
+ * clearCanvas: canvas をすべてクリアする関数
  */
 function clearCanvas() {
     ctx.clearRect(0, 0, width, height);
@@ -38,17 +38,18 @@ function drawCard() {
     // パス開始
     ctx.beginPath();
     // 線のスタイルを設定
-    ctx.strokeStyle = 'rgba(14, 165, 233, 0.22)';
-    ctx.lineWidth = 2;
+    // ctx.strokeStyle = 'rgba(14, 165, 233, 0.22)';
+    ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
+    ctx.lineWidth = 5;
 
     // TODO: 角丸長方形のパスを定義
-    // ctx.quadraticCurveTo(x + rectWidth, y, x + rectWidth, y + radius);
-    // ctx.lineTo(x + rectWidth, y + rectHeight - radius);
-    // ctx.quadraticCurveTo(x + rectWidth, y + rectHeight, x + rectWidth - radius, y + rectHeight);
-    // ctx.lineTo(x + radius, y + rectHeight);
-    // ctx.quadraticCurveTo(x, y + rectHeight, x, y + rectHeight - radius);
-    // ctx.lineTo(x, y + radius);
-    // ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.quadraticCurveTo(x + rectWidth, y, x + rectWidth, y + radius);
+    ctx.lineTo(x + rectWidth, y + rectHeight - radius);
+    ctx.quadraticCurveTo(x + rectWidth, y + rectHeight, x + rectWidth - radius, y + rectHeight);
+    ctx.lineTo(x + radius, y + rectHeight);
+    ctx.quadraticCurveTo(x, y + rectHeight, x, y + rectHeight - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
 
     // パスを閉じる
     ctx.closePath();
@@ -68,10 +69,10 @@ function drawSquare() {
 
     // TODO: 四角形の描画
     ctx.beginPath();
-    // ctx.rect(150, 300, 200, 200);
-    // // 塗りつぶしのスタイル適用
-    // ctx.fillStyle = squareGradient;
-    // ctx.fill();
+    ctx.rect(150, 300, 200, 200);
+    // 塗りつぶしのスタイル適用
+    ctx.fillStyle = squareGradient;
+    ctx.fill();
     ctx.closePath();
 
     // 描画状態を復元
@@ -90,9 +91,9 @@ function drawTriangle() {
 
     // TODO: 三角形の描画
     ctx.beginPath();
-    // ctx.moveTo(424, 226);
-    // ctx.lineTo(536, 420);
-    // ctx.lineTo(312, 420);
+    ctx.moveTo(424, 226);
+    ctx.lineTo(536, 420);
+    ctx.lineTo(312, 420);
     ctx.closePath();
     // 塗りつぶしのスタイル適用
     ctx.fillStyle = '#f8fafc';
@@ -119,9 +120,9 @@ function drawCircle() {
 
     // TODO: 円の描画
     ctx.beginPath();
-    // ctx.arc(474, 286, 72, 0, Math.PI * 2);
-    // ctx.fillStyle = circleGradient;
-    // ctx.fill();
+    ctx.arc(474, 286, 72, 0, Math.PI * 2);
+    ctx.fillStyle = circleGradient;
+    ctx.fill();
     ctx.restore();
 }
 
