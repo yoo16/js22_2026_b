@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvas Basic</title>
+    <!-- Tailwind CSS の CDN 読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        canvas {
+            display: block;
+            width: min(100%, 720px);
+            height: auto;
+            aspect-ratio: 1 / 1;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center px-4 py-8 text-slate-900 antialiased">
+    <main class="grid w-full max-w-6xl items-center gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <section>
+            <p class="text-xs font-bold uppercase tracking-[0.24em] text-sky-600">Canvas Starter</p>
+            <h1 class="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-6xl">Canvas Basic</h1>
+            <p class="mt-5 max-w-md text-base font-medium leading-8 text-slate-600">
+                図形、曲線、影、テキストを重ねたシンプルな Canvas サンプル。
+            </p>
+            <div class="mt-8 grid max-w-md grid-cols-3 gap-3 text-center text-xs font-bold text-slate-600">
+                <button id="cardButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">Card</button>
+                <button id="squareButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">Square</button>
+                <button id="triangleButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">Triangle</button>
+                <button id="circleButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">Circle</button>
+                <button id="blobButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">Blob</button>
+                <button id="curvesButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">Curves</button>
+                <button id="textButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">Text</button>
+                <button id="clearButton" class="rounded-2xl border border-gray-300 bg-white px-3 py-4 shadow-sm">クリア</button>
+            </div>
+        </section>
+
+        <section class="rounded-[2rem] border border-white/80 bg-white/72 p-4 shadow-2xl shadow-sky-900/10 backdrop-blur sm:p-6">
+            <!-- Canvas 要素 -->
+            <canvas id="myCanvas" width="720" height="720" class="rounded-[1.5rem] bg-white shadow-inner"></canvas>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
