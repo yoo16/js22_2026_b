@@ -160,7 +160,7 @@ canvas.addEventListener('touchcancel', endDrawing);
 // コントロール変更時のイベントリスナー
 colorPicker.addEventListener('change', (e) => {
     // TODO: 現在の色を更新
-    // currentColor = e.target.value;
+    currentColor = e.target.value;
     colorValue.textContent = currentColor;
     // 消しゴムモードの場合は、消しゴムをオフにする
     if (isEraser) {
@@ -172,7 +172,7 @@ colorPicker.addEventListener('change', (e) => {
 // 太さ入力
 lineWidthRange.addEventListener('input', (e) => {
     // TODO: 線の太さの表示を更新
-    // currentLineWidth = Number(e.target.value);
+    currentLineWidth = Number(e.target.value);
     lineWidthValue.textContent = currentLineWidth;
 });
 
