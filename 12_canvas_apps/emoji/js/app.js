@@ -24,8 +24,8 @@ function spawnFace(event) {
     let y = event.clientY;
 
     // TODO: ランダムスピード: (Math.random() - 0.5) * 8
-    let speedX = 0;
-    let speedY = 0;
+    let speedX = (Math.random() - 0.5) * 8;
+    let speedY = (Math.random() - 0.5) * 8;
 
     // 新しい顔文字作成
     faces.push(new Face(x, y, speedX, speedY));
