@@ -77,7 +77,7 @@ function startDrawing(x, y) {
     // 描画フラグを true に設定
     isDrawing = true;
     // TODO: 最後の位置を更新
-    // [lastX, lastY] = [x, y];
+    [lastX, lastY] = [x, y];
 }
 
 /**
@@ -100,10 +100,10 @@ function draw(x, y) {
     ctx.lineWidth = currentLineWidth;
 
     // TODO: 前回の位置から現在の位置まで線を描画
-    // ctx.beginPath();
-    // ctx.moveTo(lastX, lastY);
-    // ctx.lineTo(x, y);
-    // ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
 
     // 最後の位置を更新
     [lastX, lastY] = [x, y];
@@ -121,7 +121,7 @@ function endDrawing() {
 
 // イベント
 // TODO: マウスダウンイベント: mousedown
-canvas.addEventListener('', (e) => {
+canvas.addEventListener('mousedown', (e) => {
     const point = getCanvasPoint(e);
     startDrawing(point.x, point.y);
 });
