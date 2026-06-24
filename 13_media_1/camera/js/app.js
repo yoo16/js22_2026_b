@@ -80,17 +80,17 @@ function createcanvas() {
  */
 const onCamera = async () => {
     // TODO: カメラの有効化処理を実装
-    // const stream = await navigator.mediaDevices.getUserMedia({
-    //     video: {
-    //         width: { ideal: 1280 },
-    //         height: { ideal: 1920 },
-    //         facingMode: 'user',
-    //     },
-    //     audio: false,
-    // });
+    const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+            width: { ideal: 1280 },
+            height: { ideal: 1920 },
+            facingMode: 'user',
+        },
+        audio: false,
+    });
 
     // TODO: ビデオ要素にカメラ映像を表示
-    // video.srcObject = stream;
+    video.srcObject = stream;
 };
 
 /**
@@ -125,17 +125,17 @@ function drawVideoCover() {
     // ctx.filter = imageFilters[currentFilter] || imageFilters.natural;
 
     // TODO: ビデオをキャンバス全体に cover 表示で描画
-    // ctx.drawImage(
-    //     video,
-    //     sourceX,
-    //     sourceY,
-    //     sourceWidth,
-    //     sourceHeight,
-    //     0,
-    //     0,
-    //     canvasWidth,
-    //     canvasHeight
-    // );
+    ctx.drawImage(
+        video,
+        sourceX,
+        sourceY,
+        sourceWidth,
+        sourceHeight,
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
+    );
 
     // ctx の状態を復元
     ctx.restore();
