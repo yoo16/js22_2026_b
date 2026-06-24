@@ -188,22 +188,22 @@ const onCapture = async () => {
     loadingModal.classList.remove('hidden');
 
     // TODO: canvas の内容を Blob に変換
-    // canvas.toBlob((blob) => {
-    //     // 画像ファイルを DataTransfer に追加
-    //     const file = new File([blob], imageFileName, { type: imageType });
-    //     // データ転送オブジェクトにファイルを追加
-    //     dataTransfer.items.add(file);
-    //     // 画像入力要素にファイルを設定
-    //     photoInput.files = dataTransfer.files;
-    //     // 画像URL を生成
-    //     const imageUrl = URL.createObjectURL(blob);
-    //     // 画像モーダルに表示
-    //     capturedImage.src = imageUrl;
+    canvas.toBlob((blob) => {
+        // 画像ファイルを DataTransfer に追加
+        const file = new File([blob], imageFileName, { type: imageType });
+        // データ転送オブジェクトにファイルを追加
+        dataTransfer.items.add(file);
+        // 画像入力要素にファイルを設定
+        photoInput.files = dataTransfer.files;
+        // 画像URL を生成
+        const imageUrl = URL.createObjectURL(blob);
+        // 画像モーダルに表示
+        capturedImage.src = imageUrl;
 
-    //     // モーダル表示とローディング非表示
-    //     imageModal.classList.remove('hidden');
-    //     loadingModal.classList.add('hidden');
-    // }, imageType);
+        // モーダル表示とローディング非表示
+        imageModal.classList.remove('hidden');
+        loadingModal.classList.add('hidden');
+    }, imageType);
 };
 
 /**
@@ -216,21 +216,21 @@ const countDown = () => {
     countdownCircle.classList.add('animate-ping');
 
     // TODO: setInterval を使用してカウントダウンを開始
-    // const countdownInterval = setInterval(() => {
-    //     count--;
-    //     if (count > 0) {
-    //         // カウントダウン中
-    //         countdownCircle.textContent = count;
-    //     } else {
-    //         // カウントダウン終了
-    //         clearInterval(countdownInterval);
-    //         countdownOverlay.classList.add('hidden');
-    //         countdownCircle.classList.remove('animate-ping');
-    //         // 画像キャプチャを実行
-    //         onCapture();
-    //         captureBtn.disabled = false;
-    //     }
-    // }, 1000);
+    const countdownInterval = setInterval(() => {
+        count--;
+        if (count > 0) {
+            // カウントダウン中
+            countdownCircle.textContent = count;
+        } else {
+            // カウントダウン終了
+            clearInterval(countdownInterval);
+            countdownOverlay.classList.add('hidden');
+            countdownCircle.classList.remove('animate-ping');
+            // 画像キャプチャを実行
+            onCapture();
+            captureBtn.disabled = false;
+        }
+    }, 1000);
 };
 
 /**
@@ -239,7 +239,7 @@ const countDown = () => {
 const playSound = () => {
     countdownAudio.currentTime = 0;
     // TODO: カウントダウン音を再生
-    // countdownAudio.play();
+    countdownAudio.play();
 };
 
 // キャプチャボタン押下時
@@ -314,12 +314,12 @@ closeImageModal.addEventListener('click', () => {
 
 // TODO: ダウンロードボタンのイベント
 downloadImageBtn.addEventListener('click', () => {
-    // const link = document.createElement('a');
-    // link.href = capturedImage.src;
-    // link.download = `captured-image-${Date.now()}.jpg`;
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
+    const link = document.createElement('a');
+    link.href = capturedImage.src;
+    link.download = `captured-image-${Date.now()}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 });
 
 // Audio ON/OFF 切替
