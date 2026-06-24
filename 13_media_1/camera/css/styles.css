@@ -1,0 +1,57 @@
+.puri-shell {
+    border: 1px solid rgba(14, 116, 144, 0.18);
+    border-radius: 34px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(232, 250, 255, 0.84)),
+        #f8fdff;
+    box-shadow: 0 36px 100px rgba(8, 145, 178, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.86);
+}
+
+.puri-badge {
+    background: linear-gradient(135deg, #38bdf8, #67e8f9 56%, #ffffff);
+    color: #075985;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.74), 0 10px 26px rgba(14, 165, 233, 0.18);
+}
+
+#canvas-area canvas {
+    display: block;
+    width: min(100%, 430px);
+    height: auto;
+    aspect-ratio: 37 / 56;
+}
+
+.frame-thumbnail {
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.frame-thumbnail:hover {
+    transform: translateY(-2px);
+}
+
+.frame-thumbnail.border-blue-500 {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 4px rgba(186, 230, 253, 0.78), 0 14px 30px rgba(14, 165, 233, 0.22);
+}
+
+.aqua-glass {
+    border: 1px solid rgba(14, 165, 233, 0.24);
+    background: rgba(255, 255, 255, 0.64);
+    box-shadow: 0 16px 44px rgba(8, 145, 178, 0.12);
+    backdrop-filter: blur(16px);
+}
+
+input[type="color"] {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 0;
+    border-radius: 999px;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUA PHOTO</title>
+    <!-- Tailwind CSS の CDN 読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="text-sky-950 antialiased">
+    <!-- ローディングモーダル -->
+    <div id="loadingModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-sky-950/40 p-4 backdrop-blur-sm flex">
+        <div class="rounded-3xl border border-sky-200 bg-white/90 px-8 py-6 shadow-2xl shadow-sky-200/50">
+            <p class="text-sm font-black tracking-[0.24em] text-sky-600">PRINTING...</p>
+        </div>
+    </div>
+
+    <!-- 画像表示モーダル（キャプチャ後の画像を表示） -->
+    <div id="imageModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-sky-950/60 p-4 flex">
+        <div>
+            <img id="capturedImage" src="" alt="Captured Image"
+                class="max-h-[72vh] w-full rounded-3xl object-contain">
+            <div class="mt-5 text-center flex w-full flex-col gap-3">
+                <button id="downloadImage"
+                    class="rounded-full bg-sky-500 px-6 py-3 text-sm font-black tracking-[0.12em] text-white shadow-lg shadow-sky-300/50 transition hover:bg-sky-600">
+                    Download
+                </button>
+                <button id="closeImageModal"
+                    class="rounded-full border border-sky-200 bg-white px-6 py-3 text-sm font-black tracking-[0.12em] text-sky-700 transition hover:bg-sky-50">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- カウントダウン用オーバーレイ -->
+    <div id="countdownOverlay"
+        class="fixed inset-0 z-40 hidden items-center justify-center bg-sky-950/20 backdrop-blur-[2px] flex">
+        <div id="countdownCircle"
+            class="flex h-40 w-40 items-center justify-center rounded-full border-[10px] border-white bg-sky-400 text-8xl font-black text-white shadow-2xl shadow-sky-300/60">
+        </div>
+    </div>
+
+    <main class="relative flex min-h-screen w-full flex-col">
+        <section class="puri-shell flex flex-1 flex-col p-4 sm:p-6">
+            <header class="grid gap-5 pb-5 lg:grid-cols-[1fr_auto] lg:items-end">
+                <div>
+                    <h1 class="text-3xl text-center tracking-normal text-sky-500 drop-shadow-sm">
+                        AQUA PHOTO
+                    </h1>
+                </div>
+            </header>
+
+            <div class="grid flex-1 items-start gap-6 grid-cols-2">
+                <section id="video-area" class="aqua-glass rounded-[32px] p-4 flex flex-col items-center gap-5">
+                    <input type="file" id="photo" class="hidden" />
+
+                    <!-- ビデオタグ -->
+                    <video id="video" width="720" height="480" autoplay class="hidden rounded-lg"></video>
+
+                    <!-- 合成用 Canvas 表示エリア -->
+                    <div id="canvas-area" class="flex w-full justify-center"></div>
+
+                </section>
+
+                <aside class="aqua-glass rounded-[32px] p-4">
+                    <div class="my-2">
+                        <label for="frameTextInput"
+                            class="mb-2 block text-xs font-black tracking-[0.16em] text-sky-700">
+                            FRAME SELECT
+                        </label>
+                    </div>
+                    <!-- フレーム選択：サムネイルで -->
+                    <div id="frameThumbnails" class="grid grid-cols-4 gap-3 overflow-x-auto2">
+                        <img src="images/frame0.png" data-frame="images/frame0.png" alt="Frame 0"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-blue-500 object-cover">
+                        <img src="images/frame1.png" data-frame="images/frame1.png" alt="Frame 1"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-transparent object-cover">
+                        <img src="images/frame2.png" data-frame="images/frame2.png" alt="Frame 2"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-transparent object-cover hover:border-blue-500">
+                        <img src="images/frame3.png" data-frame="images/frame3.png" alt="Frame 3"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-transparent object-cover hover:border-blue-500">
+                        <img src="images/frame4.png" data-frame="images/frame4.png" alt="Frame 4"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-transparent object-cover hover:border-blue-500">
+                        <img src="images/frame5.png" data-frame="images/frame5.png" alt="Frame 5"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-transparent object-cover hover:border-blue-500">
+                        <img src="images/frame6.png" data-frame="images/frame6.png" alt="Frame 6"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-transparent object-cover hover:border-blue-500">
+                        <img src="images/frame7.png" data-frame="images/frame7.png" alt="Frame 7"
+                            class="frame-thumbnail shrink-0 cursor-pointer rounded-3xl border-transparent object-cover hover:border-blue-500">
+                    </div>
+
+                    <div class="mt-5 space-y-3">
+                        <div>
+                            <label for="frameTextInput"
+                                class="mb-2 block text-xs font-black tracking-[0.16em] text-sky-700">
+                                FRAME TEXT / COLOR
+                            </label>
+                            <div class="flex items-center gap-3">
+                                <input id="frameTextInput" type="text" maxlength="20" placeholder="文字を入力"
+                                    class="w-[80%] rounded-full border border-sky-200 bg-white/80 px-4 py-3 text-sm font-black text-sky-700 shadow-sm outline-none transition placeholder:text-sky-300 hover:bg-sky-50 focus:border-sky-400">
+                                <input id="frameTextColor" type="color" value="#222222"
+                                    class="h-12 w-12 cursor-pointer rounded-full border border-sky-200 bg-white/80 p-1 shadow-sm outline-none transition hover:bg-sky-50 focus:border-sky-400">
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mb-2 block text-xs font-black tracking-[0.16em] text-sky-700">
+                                IMAGE FILTER
+                            </p>
+                            <div id="filterButtons" class="grid grid-cols-2 gap-2">
+                                <button type="button" data-filter="puri"
+                                    class="filter-button rounded-full border border-sky-500 bg-sky-500 px-3 py-2 text-xs font-black tracking-[0.08em] text-white shadow-sm transition hover:bg-sky-600">
+                                    Puri Bright
+                                </button>
+                                <button type="button" data-filter="skin"
+                                    class="filter-button rounded-full border border-sky-200 bg-white/80 px-3 py-2 text-xs font-black tracking-[0.08em] text-sky-700 shadow-sm transition hover:bg-sky-50">
+                                    Skin Tone
+                                </button>
+                                <button type="button" data-filter="airy"
+                                    class="filter-button rounded-full border border-sky-200 bg-white/80 px-3 py-2 text-xs font-black tracking-[0.08em] text-sky-700 shadow-sm transition hover:bg-sky-50">
+                                    Airy White
+                                </button>
+                                <button type="button" data-filter="pop"
+                                    class="filter-button rounded-full border border-sky-200 bg-white/80 px-3 py-2 text-xs font-black tracking-[0.08em] text-sky-700 shadow-sm transition hover:bg-sky-50">
+                                    Pop Cute
+                                </button>
+                                <button type="button" data-filter="dreamy"
+                                    class="filter-button rounded-full border border-sky-200 bg-white/80 px-3 py-2 text-xs font-black tracking-[0.08em] text-sky-700 shadow-sm transition hover:bg-sky-50">
+                                    Dreamy
+                                </button>
+                                <button type="button" data-filter="natural"
+                                    class="filter-button rounded-full border border-sky-200 bg-white/80 px-3 py-2 text-xs font-black tracking-[0.08em] text-sky-700 shadow-sm transition hover:bg-sky-50">
+                                    Natural
+                                </button>
+                            </div>
+                        </div>
+                        <button id="toggleAudioBtn" type="button"
+                            class="w-full rounded-full border border-sky-200 bg-white/80 px-4 py-3 text-xs font-black tracking-[0.16em] text-sky-700 shadow-sm transition hover:bg-sky-50">
+                            Audio ON
+                        </button>
+                    </div>
+
+                    <div class="mt-6 flex w-full justify-center">
+                        <button id="capture-btn" type="button"
+                            class="rounded-full border-4 border-white bg-sky-500 px-10 py-4 text-lg font-black tracking-[0.12em] text-white shadow-xl shadow-sky-300/60 transition hover:-translate-y-0.5 hover:bg-sky-600 disabled:cursor-not-allowed disabled:bg-sky-300 disabled:shadow-none">
+                            撮影する
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/app.js" defer></script>
+</body>
+
+</html>
