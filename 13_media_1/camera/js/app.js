@@ -254,8 +254,10 @@ captureBtn.addEventListener('click', () => {
 frameThumbnails.forEach(thumb => {
     thumb.addEventListener('click', () => {
         // TODO: data-frame 属性から currentFrameSrc を更新
+        currentFrameSrc = thumb.dataset.frame
 
         // TODO: 合成用のフレーム画像を更新: overlayFrame.src
+        overlayFrame.src = currentFrameSrc
 
         // 選択中のサムネイルにスタイルを適用
         frameThumbnails.forEach(t => t.classList.remove('border-blue-500'));
@@ -296,7 +298,7 @@ video.addEventListener('play', () => {
         if (overlayFrame.complete) {
             ctx.filter = 'none';
             // TODO: フレーム画像をキャンバスに描画
-            // ctx.drawImage(overlayFrame, 0, 0, canvasWidth, canvasHeight);
+            ctx.drawImage(overlayFrame, 0, 0, canvasWidth, canvasHeight);
         }
         drawFrameText();
         requestAnimationFrame(drawComposite);
