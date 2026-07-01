@@ -47,9 +47,9 @@ new Chart(ctx, {
             pointRadius: 5,
             pointHoverRadius: 7,
             // TODO: 線を滑らかに: 0.4
-            tension: 0,
+            tension: 0.4,
             // TODO: グラフの下を塗りつぶす: true
-            fill: false,
+            fill: true,
         }],
     },
     options: {
