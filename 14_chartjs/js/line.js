@@ -19,9 +19,11 @@ function renderStats() {
 
     // TODO: 最適睡眠時間を #stat-best-sleep に表示
     //    ヒント: document.getElementById('stat-best-sleep').textContent = ???;
+    document.getElementById('stat-best-sleep').textContent = bestSleep;
 
     // TODO: 最高生産性スコアを #stat-max-score に表示
     //    ヒント: document.getElementById('stat-max-score').textContent = ???;
+    document.getElementById('stat-max-score').textContent = maxScore;
 
     document.getElementById('stat-count').textContent = data.length;
     document.getElementById('insight-text').textContent =
