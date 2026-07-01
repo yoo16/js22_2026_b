@@ -57,7 +57,7 @@ new Chart(ctx, {
             // TODO: 票数の配列をセット: values
             data: values,
             // TODO: グラフの色をセット: colors
-            backgroundColor: [],
+            backgroundColor: colors,
             borderRadius: 8,
             borderSkipped: false,
         }],
