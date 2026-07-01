@@ -49,13 +49,13 @@ function renderStats() {
 // ─── グラフの作成 ───
 new Chart(ctx, {
     // TODO: 棒グラフ: bar
-    type: '',   
+    type: 'bar',   
     data: {
-        labels,
+        labels: labels,
         datasets: [{
             label: 'Votes',
             // TODO: 票数の配列をセット: values
-            data: null,
+            data: values,
             // TODO: グラフの色をセット: colors
             backgroundColor: [],
             borderRadius: 8,
