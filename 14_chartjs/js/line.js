@@ -33,13 +33,13 @@ function renderStats() {
 // ─── グラフの作成 ───
 new Chart(ctx, {
     // TODO: 折れ線グラフの種類を入力しよう（'line'）
-    type: '',
+    type: 'line',
     data: {
         labels,
         datasets: [{
             label: '1週間のデータ',
             // TODO: 生産性スコアの配列をセット: data
-            data: null,  
+            data,  
             backgroundColor: 'rgba(59, 130, 246, 0.1)',
             borderColor: 'rgba(59, 130, 246, 1)',
             borderWidth: 2.5,
