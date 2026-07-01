@@ -1,0 +1,154 @@
+/* ─── Scan lines ─── */
+.scanlines {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 229, 255, 0.018) 2px,
+        rgba(0, 229, 255, 0.018) 4px
+    );
+}
+
+/* ─── Parallax grid background ─── */
+#parallax-grid {
+    background-image:
+        linear-gradient(rgba(0, 229, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    will-change: transform;
+}
+
+/* ─── Radial glow layer ─── */
+#parallax-glow {
+    background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(0, 229, 255, 0.07) 0%, transparent 70%);
+    will-change: transform;
+}
+
+/* ─── Horizontal moving lines ─── */
+#parallax-lines::before,
+#parallax-lines::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent);
+    animation: sweep-line 8s linear infinite;
+}
+#parallax-lines::after {
+    animation-delay: -4s;
+}
+@keyframes sweep-line {
+    0%   { top: -5%; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { top: 105%; opacity: 0; }
+}
+
+/* ─── Glitch text ─── */
+.glitch-text {
+    position: relative;
+}
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.glitch-text::before {
+    color: #00e5ff;
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+    animation: glitch-top 4s infinite;
+}
+.glitch-text::after {
+    color: #ff6b35;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    animation: glitch-bot 4s infinite;
+}
+@keyframes glitch-top {
+    0%,85%,100% { transform: translateX(0); opacity: 0; }
+    87%          { transform: translateX(-4px); opacity: 0.9; }
+    89%          { transform: translateX(0);    opacity: 0; }
+    91%          { transform: translateX(-3px); opacity: 0.9; }
+    93%          { transform: translateX(0);    opacity: 0; }
+}
+@keyframes glitch-bot {
+    0%,85%,100% { transform: translateX(0); opacity: 0; }
+    88%          { transform: translateX(4px);  opacity: 0.9; }
+    90%          { transform: translateX(0);    opacity: 0; }
+    92%          { transform: translateX(3px);  opacity: 0.9; }
+    94%          { transform: translateX(0);    opacity: 0; }
+}
+
+/* ─── HUD corner brackets ─── */
+.hud-frame {
+    position: relative;
+}
+.hud-frame::before,
+.hud-frame::after,
+.hud-frame > .hud-corner-tr,
+.hud-frame > .hud-corner-bl {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: #00e5ff;
+    border-style: solid;
+    opacity: 0.7;
+    z-index: 10;
+}
+.hud-frame::before { top: 0;    left: 0;  border-width: 2px 0 0 2px; }
+.hud-frame::after  { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+.hud-frame > .hud-corner-tr { top: 0;    right: 0; border-width: 2px 2px 0 0; }
+.hud-frame > .hud-corner-bl { bottom: 0; left: 0;  border-width: 0 0 2px 2px; }
+
+/* ─── Thumbnail selected ring ─── */
+.thumb-active {
+    border-color: #00e5ff !important;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+    opacity: 1 !important;
+    transform: scale(1.08);
+}
+
+/* ─── Image noise transition ─── */
+.noise-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    transition: opacity 0.35s ease;
+}
+
+@keyframes img-fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.img-fadein {
+    animation: img-fadein 0.35s ease forwards;
+}
+
+/* ─── Typewriter cursor ─── */
+.tw-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.8em;
+    background: #00e5ff;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: tw-blink 0.75s step-end infinite;
+}
+@keyframes tw-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(0, 229, 255, 0.3); }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.6); }

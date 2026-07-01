@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>売上・ソフトウェア分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+    <!-- ─── Header ─── -->
+    <header class="bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800">📊 売上・ソフトウェア分析</h1>
+                <p class="text-xs text-slate-400 mt-0.5">2024年 月次売上高 ／ ゲーム販売台数</p>
+            </div>
+            <a href="index.html" class="text-xs text-slate-400 hover:text-slate-600 transition-colors">← Back</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 space-y-5">
+
+        <!-- ─── Sales Stats ─── -->
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 text-center">
+                <p class="text-xs text-slate-400 mb-1">年間合計売上</p>
+                <p id="stat-total" class="text-2xl font-extrabold text-slate-800">—</p>
+                <p class="text-xs text-slate-400 mt-0.5">百万円</p>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 text-center">
+                <p class="text-xs text-slate-400 mb-1">最高月</p>
+                <p id="stat-best-month" class="text-2xl font-extrabold text-slate-800">—</p>
+                <p id="stat-best-val" class="text-xs text-slate-400 mt-0.5">— 百万円</p>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 text-center">
+                <p class="text-xs text-slate-400 mb-1">最低月</p>
+                <p id="stat-worst-month" class="text-2xl font-extrabold text-slate-800">—</p>
+                <p id="stat-worst-val" class="text-xs text-slate-400 mt-0.5">— 百万円</p>
+            </div>
+        </div>
+
+        <!-- ─── Sales Chart ─── -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-widest">月次売上高（百万円）</h2>
+                <div class="flex bg-slate-100 rounded-lg p-0.5 gap-0.5">
+                    <button id="sales-bar-btn"
+                        class="text-xs px-3 py-1.5 rounded-md font-medium transition-all bg-white shadow-sm text-slate-700">棒グラフ</button>
+                    <button id="sales-line-btn"
+                        class="text-xs px-3 py-1.5 rounded-md font-medium transition-all text-slate-400">折れ線</button>
+                </div>
+            </div>
+            <canvas id="sales-chart"></canvas>
+        </div>
+
+        <!-- ─── Software Chart ─── -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+            <div class="flex items-center justify-between mb-5">
+                <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-widest">ゲーム販売台数</h2>
+                <div class="flex bg-slate-100 rounded-lg p-0.5 gap-0.5">
+                    <button id="softwares-pie-btn"
+                        class="text-xs px-3 py-1.5 rounded-md font-medium transition-all bg-white shadow-sm text-slate-700">円グラフ</button>
+                    <button id="softwares-doughnut-btn"
+                        class="text-xs px-3 py-1.5 rounded-md font-medium transition-all text-slate-400">ドーナツ</button>
+                </div>
+            </div>
+            <div class="max-w-xs mx-auto">
+                <canvas id="softwares-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- ─── message ─── -->
+        <div id="message-container" class="text-sm text-red-500 text-center"></div>
+
+    </main>
+
+    <script src="js/sales.js"></script>
+</body>
+
+</html>

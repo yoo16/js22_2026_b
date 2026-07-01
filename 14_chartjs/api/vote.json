@@ -1,0 +1,13 @@
+{
+  "title": "第99回 国政選挙",
+  "turnout": 58.7,
+  "parties": {
+    "カレー党": { "seats": 100, "votes": 36.2, "group": "与党" },
+    "ラーメン改革会": { "seats": 80, "votes": 21.4, "group": "与党" },
+    "スイーツ党": { "seats": 60, "votes": 18.0, "group": "野党" },
+    "希望のネット": { "seats": 35, "votes": 10.5, "group": "野党" },
+    "ネコ連合": { "seats": 20, "votes": 7.6, "group": "野党" },
+    "イヌ党": { "seats": 10, "votes": 4.1, "group": "野党" },
+    "無所属": { "seats": 5, "votes": 2.2, "group": "無所属" }
+  }
+}

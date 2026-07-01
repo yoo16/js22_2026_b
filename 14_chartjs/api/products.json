@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "オリジナルバッジ 1",
+        "category": "badge",
+        "price": "350",
+        "image": "/images/products/badge-1.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "new"
+    },
+    {
+        "id": 2,
+        "name": "オリジナルバッジ 2",
+        "category": "badge",
+        "price": "350",
+        "image": "/images/products/badge-2.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "new"
+    },
+    {
+        "id": 3,
+        "name": "オリジナルバッジ 3",
+        "category": "badge",
+        "price": "350",
+        "image": "/images/products/badge-3.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "coming_soon"
+    },
+    {
+        "id": 4,
+        "name": "マグカップ1",
+        "category": "mug",
+        "price": "1100",
+        "image": "/images/products/mag-cup-1.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "on_sale"
+    },
+    {
+        "id": 5,
+        "name": "マグカップ2",
+        "category": "mug",
+        "price": "1100",
+        "image": "/images/products/mag-cup-2.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "on_sale"
+    },
+    {
+        "id": 6,
+        "name": "マグカップ3",
+        "category": "mug",
+        "price": "1100",
+        "image": "/images/products/mag-cup-3.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "coming_soon"
+    },
+    {
+        "id": 6,
+        "name": "マグカップ4",
+        "category": "mug",
+        "price": "1100",
+        "image": "/images/products/mag-cup-4.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "on_sale"
+    },
+    {
+        "id": 7,
+        "name": "アクリルスタンド 1",
+        "category": "acrylic_stand",
+        "price": "1500",
+        "image": "/images/products/acrylic-stand-1.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "on_sale"
+    },
+    {
+        "id": 8,
+        "name": "アクリルスタンド 2",
+        "category": "acrylic_stand",
+        "price": "1500",
+        "image": "/images/products/acrylic-stand-2.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "on_sale"
+    },
+    {
+        "id": 9,
+        "name": "アクリルスタンド 3",
+        "category": "acrylic_stand",
+        "price": "1500",
+        "image": "/images/products/acrylic-stand-3.png",
+        "description": "人気ライバーのオリジナルグッズが登場。高品質な素材を使用し、コレクションにも普段使いにも最適なアイテムです。",
+        "stock": 100,
+        "status": "on_sale"
+    }
+]

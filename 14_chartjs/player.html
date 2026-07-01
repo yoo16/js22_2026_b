@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>キャラクター紹介</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/player.css">
+</head>
+
+<body class="bg-black min-h-screen text-white overflow-x-hidden font-mono">
+
+    <!-- ─── Parallax background layers ─── -->
+    <div id="parallax-grid" class="fixed inset-0 pointer-events-none z-0"></div>
+    <div id="parallax-glow" class="fixed inset-0 pointer-events-none z-0"></div>
+    <div id="parallax-lines" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- ─── Scan lines overlay ─── -->
+    <div class="scanlines fixed inset-0 pointer-events-none z-10"></div>
+
+    <!-- ─── Header ─── -->
+    <header class="relative z-20 border-b border-cyan-900/50 bg-black/70 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 max-w-5xl flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span class="text-xs text-cyan-500 tracking-widest uppercase">SYSTEM ONLINE</span>
+            </div>
+            <h1 id="header-title" data-text="CHARACTER PROFILE" class="text-3xl font-bold tracking-[0.3em] text-cyan-400 uppercase"></h1>
+            <a href="index.html" class="text-xs text-cyan-200 tracking-widest">← BACK</a>
+        </div>
+    </header>
+
+    <main class="relative z-20 container mx-auto px-4 max-w-5xl">
+
+        <!-- ─── キャラクター選択 ─── -->
+        <div class="border border-cyan-900/50 bg-black/60 backdrop-blur-sm my-2">
+            <div class="flex items-center gap-3 border-b border-cyan-900/40 px-5 py-2">
+                <span class="w-1 h-4 bg-cyan-400 inline-block"></span>
+                <span class="text-xs text-cyan-400 tracking-widest uppercase">SELECT UNIT</span>
+                <div class="flex-1 h-px bg-cyan-900/30"></div>
+            </div>
+            <div id="thumbnailContainer" class="flex justify-center gap-5 overflow-x-auto px-5 py-5"></div>
+        </div>
+
+        <!-- ─── キャラクター名 ─── -->
+        <div class="flex items-center gap-5 my-10">
+            <div class="flex-1 h-px bg-gradient-to-r from-transparent to-cyan-700/60"></div>
+            <h2 id="player-name"
+                class="glitch-text text-3xl font-extrabold text-white tracking-[0.2em] whitespace-nowrap uppercase"></h2>
+            <div class="flex-1 h-px bg-gradient-to-l from-transparent to-cyan-700/60"></div>
+        </div>
+
+        <!-- ─── メインコンテンツ ─── -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- キャラクター画像 + HUD -->
+            <div class="hud-frame bg-black/60 backdrop-blur-sm border border-cyan-900/50 p-1">
+                <span class="hud-corner-tr"></span>
+                <span class="hud-corner-bl"></span>
+                <div id="player-image-wrapper" class="relative">
+                    <img id="playerImage" src="" alt="キャラクター画像"
+                        class="w-full object-cover block">
+                </div>
+                <div class="px-3 py-2 flex justify-between text-xs text-cyan-500/70">
+                    <span>ID: <span id="hud-id">----</span></span>
+                    <span>STATUS: <span class="text-cyan-400">ACTIVE</span></span>
+                </div>
+            </div>
+
+            <!-- レーダーチャート -->
+            <div class="hud-frame border border-cyan-900/50 bg-black/70 backdrop-blur-sm p-5">
+                <span class="hud-corner-tr"></span>
+                <span class="hud-corner-bl"></span>
+                <canvas id="playerChart" class="w-full"></canvas>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/player.js"></script>
+    <script>
+
+    </script>
+
+</body>
+
+</html>

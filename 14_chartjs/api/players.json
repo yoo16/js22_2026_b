@@ -1,0 +1,88 @@
+{
+    "players": [
+        {
+            "id": "1",
+            "name": "レオ・ヴァルナー",
+            "image": "images/player_1.png",
+            "type": "radar",
+            "data": {
+                "labels": [ "ATK", "DEF", "MAG", "AGI", "INT", "SPR" ],
+                "datasets": [
+                    {
+                        "label": "Leo Varner",
+                        "data": [ 95, 95, 70, 75, 50, 80 ],
+                        "backgroundColor": "rgba(250, 204, 21, 0.25)",
+                        "borderColor": "rgba(250, 204, 21, 1)",
+                        "borderWidth": 2,
+                        "pointBackgroundColor": "rgba(250, 204, 21, 1)",
+                        "pointRadius": 4
+                    }
+                ]
+            },
+            "options": { "responsive": true }
+        },
+        {
+            "id": "2",
+            "name": "アリエス・ローザ",
+            "image": "images/player_2.png",
+            "type": "radar",
+            "data": {
+                "labels": [ "ATK", "DEF", "MAG", "AGI", "INT", "SPR" ],
+                "datasets": [
+                    {
+                        "label": "Aries Rosa",
+                        "data": [ 80, 90, 75, 100, 70, 80 ],
+                        "backgroundColor": "rgba(0, 229, 255, 0.2)",
+                        "borderColor": "rgba(0, 229, 255, 1)",
+                        "borderWidth": 2,
+                        "pointBackgroundColor": "rgba(0, 229, 255, 1)",
+                        "pointRadius": 4
+                    }
+                ]
+            },
+            "options": { "responsive": true }
+        },
+        {
+            "id": "3",
+            "name": "ノクターナ・エルヴァ",
+            "image": "images/player_3.png",
+            "type": "radar",
+            "data": {
+                "labels": [ "ATK", "DEF", "MAG", "AGI", "INT", "SPR" ],
+                "datasets": [
+                    {
+                        "label": "Nocturna Elva",
+                        "data": [ 55, 70, 100, 80, 95, 70 ],
+                        "backgroundColor": "rgba(167, 139, 250, 0.2)",
+                        "borderColor": "rgba(167, 139, 250, 1)",
+                        "borderWidth": 2,
+                        "pointBackgroundColor": "rgba(167, 139, 250, 1)",
+                        "pointRadius": 4
+                    }
+                ]
+            },
+            "options": { "responsive": true }
+        },
+        {
+            "id": "4",
+            "name": "ミサキ",
+            "image": "images/player_4.png",
+            "type": "radar",
+            "data": {
+                "labels": [ "ATK", "DEF", "MAG", "AGI", "INT", "SPR" ],
+                "datasets": [
+                    {
+                        "label": "Misaki",
+                        "data": [ 40, 50, 95, 97, 85, 100 ],
+                        "backgroundColor": "rgba(244, 114, 182, 0.2)",
+                        "borderColor": "rgba(244, 114, 182, 1)",
+                        "borderWidth": 2,
+                        "pointBackgroundColor": "rgba(244, 114, 182, 1)",
+                        "pointRadius": 4
+                    }
+                ]
+            },
+            "options": { "responsive": true }
+        }
+    ]
+}
