@@ -63,7 +63,7 @@ function createSoftwaresChart(type) {
     // コンテキストの取得
     const ctx = document.getElementById('softwares-chart').getContext('2d');
     // TODO: チャート作成
-    // softwaresChart = new Chart(ctx, { type, data: softwaresData, options: softwaresOptions });
+    softwaresChart = new Chart(ctx, { type, data: softwaresData, options: softwaresOptions });
 }
 
 // 統計の表示（そのまま使ってOK）
