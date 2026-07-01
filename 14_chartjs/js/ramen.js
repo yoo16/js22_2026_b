@@ -33,10 +33,10 @@ function renderTotal(labels, groups) {
     const totalList = getTotalData(labels, groups);
 
     // TODO: totalList を「票数の多い順」に並べ替え
-    // totalList.sort((a, b) => a.total - b.total);
+    totalList.sort((a, b) => b.total - a.total);
 
     // TODO: totalList の最初の最大値を取得（1位の票数）
-    const maxTotal = 0;
+    const maxTotal = totalList[0].total;
 
     totalContainer.innerHTML = totalList.map((item, i) => {
         const pct = Math.round((item.total / maxTotal) * 100);
@@ -102,7 +102,7 @@ function createProportionChart(labels, groups, colors) {
         data: { labels: [''], datasets },
         options: {
             // 横棒グラフにするには indexAxis: 'y' を指定
-            indexAxis: '',
+            indexAxis: 'y',
             responsive: true,
             plugins: {
                 legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 16, boxWidth: 14 } },
