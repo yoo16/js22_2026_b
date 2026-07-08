@@ -42,7 +42,7 @@ function addSphere(params = {}) {
     mesh.position.y = 0;
     mesh.position.z = 0;
     // TODO: メッシュをシーンに追加
-    // scene.add(mesh);
+    scene.add(mesh);
     return mesh;
 }
 
@@ -54,7 +54,7 @@ function addLight() {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(5, 10, 7.5);
     // TODO: ディレクショナルライトの影を有効化
-    // scene.add(directionalLight);
+    scene.add(directionalLight);
 }
 
 /**
