@@ -107,6 +107,7 @@ planetData.forEach(data => {
     // メッシュの作成
     const mesh = new THREE.Mesh(geometry, material);
     // TODO: 惑星をシーンに追加
+    scene.add(mesh)
 
     // 軌道リング
     const segments = 128;
@@ -120,13 +121,13 @@ planetData.forEach(data => {
         ));
     }
     // TODO: 軌道ラインのジオメトリとマテリアルを作成
-    // const orbitGeometry = new THREE.BufferGeometry().setFromPoints(orbitPoints);
-    // const orbitLine = new THREE.LineLoop(
-    //     orbitGeometry,
-    //     new THREE.LineBasicMaterial({ color: orbitLineColor, transparent: true, opacity: 0.3 })
-    // );
-    // // シーンに追加
-    // scene.add(orbitLine);
+    const orbitGeometry = new THREE.BufferGeometry().setFromPoints(orbitPoints);
+    const orbitLine = new THREE.LineLoop(
+        orbitGeometry,
+        new THREE.LineBasicMaterial({ color: orbitLineColor, transparent: true, opacity: 0.3 })
+    );
+    // シーンに追加
+    scene.add(orbitLine);
 
     // 惑星のデータを保存
     planets.push({
@@ -210,9 +211,9 @@ function animate() {
         camera.lookAt(zoomLookAt);
     } else if (trackedPlanet) {
         // TODO: ズーム完了後に惑星を追跡
-        // const offset = new THREE.Vector3(0, 10, 20);
-        // camera.position.copy(trackedPlanet.mesh.position).add(offset);
-        // camera.lookAt(trackedPlanet.mesh.position);
+        const offset = new THREE.Vector3(0, 10, 20);
+        camera.position.copy(trackedPlanet.mesh.position).add(offset);
+        camera.lookAt(trackedPlanet.mesh.position);
     }
     // レンダリング
     renderer.render(scene, camera);
