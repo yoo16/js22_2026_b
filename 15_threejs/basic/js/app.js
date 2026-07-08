@@ -4,15 +4,15 @@ const scene = new THREE.Scene();
 // アスペクト比はウィンドウサイズ
 const aspect = window.innerWidth / window.innerHeight;
 // TODO: 視野角: 75
-const fov = 0;
+const fov = 75;
 // TODO: 近接面遠方面: 0.1
-const near = 0;
+const near = 0.1;
 // TODO: 遠方面: 1000
-const far = 0;
+const far = 1000;
 // カメラ作成 
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-// TODO: カメラ位置を設定（z軸：奥行き）
-camera.position.z = 0;
+// TODO: カメラ位置を設定（z軸：奥行き）: 7
+camera.position.z = 5;
 
 // レンダラー作成
 const renderer = new THREE.WebGLRenderer({ antialias: true });
