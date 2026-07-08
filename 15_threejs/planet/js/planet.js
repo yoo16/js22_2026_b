@@ -31,11 +31,13 @@ const createSun = () => {
     const material = new THREE.MeshBasicMaterial({ color: 0xff7a00 });
     const mesh = new THREE.Mesh(geometry, material);
     // TODO: 太陽をシーンに追加
+    scene.add(mesh)
 
     // 光源
     const light = new THREE.PointLight(pointLightColor, 5, 420);
     light.position.copy(mesh.position);
     // TODO: 光源をシーンに追加: 他の惑星を照らす
+    scene.add(light);
 
     // 太陽のフレアを追加
     const coreGlow = createSunGlow(mesh, 0xfff0aa, 1.0, 42);
@@ -75,6 +77,7 @@ const createSunGlow = (sunMesh, color, opacity, size) => {
     sprite.renderOrder = -1;
 
     // TODO: スプライトをシーンに追加
+    scene.add(sprite)
     return sprite;
 };
 
