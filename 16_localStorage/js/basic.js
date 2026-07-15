@@ -41,7 +41,7 @@ function escapeHtml(value) {
 function renderInspector() {
     const rows = WATCHED_KEYS.map((key) => {
         // TODO: LocalStorage にキーを設定して値取得
-        const raw = "";
+        const raw = localStorage.getItem(key)
         // 値チェック
         const hasValue = raw !== null;
         // 値がある場合は緑色、ない場合はグレーで表示する
@@ -96,7 +96,7 @@ function addMember() {
 }
 
 // --- テキスト ---
-
+// テキストの保存ボタンをクリックした時の処理
 document.querySelector('[data-action="save-text"]').addEventListener('click', () => {
     // 入力欄の値を取得して、前後の空白を削除
     const value = noteInput.value.trim();
@@ -106,14 +106,15 @@ document.querySelector('[data-action="save-text"]').addEventListener('click', ()
         return;
     }
     // TODO: LocalStorage にキーを設定して値保存: key = note
+    localStorage.setItem('note', value)
 
     showMessage('保存しました');
     renderInspector();
 });
-
+// 読み込みボタンがクリックされた時の処理
 document.querySelector('[data-action="load-text"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して値取得: key = note
-    const value = null;
+    const value = localStorage.getItem('note');
     if (value === null) {
         showMessage('データがありません。先に「保存」を押してください。', 'error');
         return;
@@ -121,9 +122,10 @@ document.querySelector('[data-action="load-text"]').addEventListener('click', ()
     noteInput.value = value;
     showMessage(`読み込みました:\n${value}`);
 });
-
+// 削除ボタンがクリックされた時の処理
 document.querySelector('[data-action="remove-text"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して値削除: key = note
+    localStorage.removeItem('note');
     noteInput.value = '';
     showMessage('削除しました。');
     renderInspector();
