@@ -168,7 +168,7 @@ document.querySelector('[data-action="save-list"]').addEventListener('click', ()
 
 document.querySelector('[data-action="load-list"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して JSON 取得: key = list
-    const json = null;
+    const json = localStorage.getItem('list');
     if (json === null) {
         showMessage('データがありません。先に「保存」を押してください。', 'error');
         return;
@@ -181,7 +181,7 @@ document.querySelector('[data-action="load-list"]').addEventListener('click', ()
 
 document.querySelector('[data-action="remove-list"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して値削除: key = list
-    
+    localStorage.removeItem('list');
     members = [];
     renderMemberDraft();
     showMessage('削除しました。');
