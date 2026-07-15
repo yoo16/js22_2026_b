@@ -193,6 +193,7 @@ document.querySelector('[data-action="remove-list"]').addEventListener('click', 
 document.querySelector('[data-action="clear-all"]').addEventListener('click', () => {
     // TODO: LocalStorage から監視対象のキーをすべて削除
     // WATCHED_KEYS.forEach(key => localStorage.removeItem(key));
+    localStorage.clear();
     noteInput.value = '';
     members = [];
     renderMemberDraft();
