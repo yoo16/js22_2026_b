@@ -192,16 +192,16 @@ fileInput.addEventListener('change', event => {
     // FBXファイルの読み込み
     if (extension === 'fbx') {
         // TODO: FBXLoaderの読み込み
-        // const loader = new FBXLoader(manager);
-        // loader.load(
-        //     url,
-        //     object => setupModel(object, object.animations || []),
-        //     xhr => updateProgress(file.name, xhr),
-        //     error => {
-        //         console.error('FBX読込エラー:', error);
-        //         setStatus('FBXの読み込みに失敗しました');
-        //     }
-        // );
+        const loader = new FBXLoader(manager);
+        loader.load(
+            url,
+            object => setupModel(object, object.animations || []),
+            xhr => updateProgress(file.name, xhr),
+            error => {
+                console.error('FBX読込エラー:', error);
+                setStatus('FBXの読み込みに失敗しました');
+            }
+        );
         return;
     }
 
