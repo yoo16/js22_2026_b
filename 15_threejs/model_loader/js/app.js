@@ -146,8 +146,8 @@ function setupModel(object, animations = []) {
     // アニメーションがある場合はAnimationMixerを作成して再生
     if (animations.length > 0) {
         // TODO: AnimationMixerの作成とアニメーションの再生
-        // mixer = new THREE.AnimationMixer(currentModel);
-        // mixer.clipAction(animations[0]).play();
+        mixer = new THREE.AnimationMixer(currentModel);
+        mixer.clipAction(animations[0]).play();
     }
 
     // モデルをシーンに追加
