@@ -159,6 +159,7 @@ document.querySelector('[data-action="save-list"]').addEventListener('click', ()
         return;
     }
     // TODO: LocalStorage にキーを設定して、JSONを保存: key = list
+    localStorage.setItem('list', JSON.stringify(members));
 
     const text = members.map(member => `${member.name} (${member.age}歳)`).join('\n');
     showMessage(`保存しました:\n${text}`);
