@@ -16,6 +16,7 @@ showCookies();
 // 閉じるボタン：7日間（60秒×60分×24時間×7日）表示しないようCookieに記録する
 document.getElementById("adCloseBtn").addEventListener("click", () => {
     // TODO: document.cookie に `${AD_KEY}=1; path=/; max-age=${60 * 60 * 24 * 7}` を代入する
+    document.cookie = `${AD_KEY}=1; path=/; max-age=${60 * 60 * 24 * 7}`;
     adBanner.classList.add("hidden");
     showCookies();
 });
