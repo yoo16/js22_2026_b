@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cookie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 外部テーマCSS -->
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+
+<body class="antialiased">
+    <main class="mx-auto max-w-2xl p-6">
+        <header class="mb-6 flex items-center justify-between">
+            <h1 class="text-2xl font-semibold">Cookie</h1>
+
+            <!-- テーマ切り替えボタン -->
+            <button id="themeBtn" type="button" aria-pressed="false"
+                class="theme-button flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm shadow-sm">
+                <span id="themeIcon">🌞</span>
+                <span id="themeLabel">ライト</span>
+            </button>
+        </header>
+
+        <!-- 広告バナー: 閉じた状態をCookieに記憶する実践例 -->
+        <section class="mb-6">
+            <div id="adBanner" class="card relative rounded-2xl border p-4 shadow-sm">
+                <button id="adCloseBtn" type="button" aria-label="広告を閉じる"
+                    class="theme-muted absolute right-3 top-3 text-lg leading-none hover:opacity-70">
+                    ✕
+                </button>
+                <p class="pr-8 text-sm font-semibold text-amber-600">🎉 期間限定セール開催中！最大50%OFF</p>
+                <p class="theme-muted mt-1 text-xs">閉じると7日間はこのバナーを表示しません。</p>
+            </div>
+            <button id="adResetBtn" type="button"
+                class="theme-muted mt-2 text-xs underline hover:opacity-70">
+                広告表示をリセット（Cookieを削除してもう一度表示）
+            </button>
+        </section>
+        <!-- 入力カード -->
+        <section class="mb-6">
+
+            <div class="card rounded-2xl border p-4 shadow-sm space-y-3">
+                <div>
+                    <label class="theme-muted block text-sm font-medium mb-1">アカウント名</label>
+                    <input id="account_name" type="text"
+                        class="form-control w-full rounded-xl border px-4 py-2 text-sm" />
+                </div>
+
+                <!-- モード選択 -->
+                <div>
+                    <label class="theme-muted block text-sm font-medium mb-1">有効期限の指定方法</label>
+                    <select id="mode" class="form-control w-full rounded-xl border px-4 py-2 text-sm">
+                        <option value="expires">expires（日付指定）</option>
+                        <option value="max-age">max-age（秒指定）</option>
+                    </select>
+                </div>
+
+                <!-- expires 入力 -->
+                <div id="expiresField">
+                    <label class="theme-muted block text-sm font-medium mb-1">expires (日付時刻)</label>
+                    <input id="expires" type="datetime-local"
+                        class="form-control w-full rounded-xl border px-4 py-2 text-sm" />
+                </div>
+
+                <!-- max-age 入力 -->
+                <div id="maxAgeField" class="hidden">
+                    <label class="theme-muted block text-sm font-medium mb-1">max-age (秒)</label>
+                    <input id="maxAge" type="number" placeholder="30"
+                        class="form-control w-full rounded-xl border px-4 py-2 text-sm" />
+                </div>
+
+                <div class="flex gap-2">
+                    <button id="saveBtn" type="button"
+                        class="flex-1 rounded-xl bg-sky-600 px-4 py-2 text-white font-medium shadow-sm hover:bg-sky-700">
+                        保存
+                    </button>
+                    <button id="deleteBtn" type="button"
+                        class="flex-1 rounded-xl bg-red-600 px-4 py-2 text-white font-medium shadow-sm hover:bg-red-700">
+                        削除
+                    </button>
+                    <button id="deleteAllBtn" type="button"
+                        class="flex-1 rounded-xl bg-red-600 px-4 py-2 text-white font-medium shadow-sm hover:bg-red-700">
+                        すべて削除
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 表示カード -->
+        <section>
+            <div class="card rounded-2xl border p-4 shadow-sm">
+                <h2 class="theme-muted text-sm font-medium mb-2">Cookie View</h2>
+                <pre id="cookies"
+                    class="cookie-output text-sm text-white bg-gray-900 min-h-[96px] whitespace-pre-wrap rounded-xl border p-3">(まだありません)</pre>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/cookie.js"></script>
+    <script src="js/basic.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+
+</html>

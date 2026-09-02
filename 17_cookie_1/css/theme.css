@@ -1,0 +1,65 @@
+:root {
+    color-scheme: light;
+    --page-bg: #f9fafb;
+    --page-text: #111827;
+    --muted-text: #374151;
+    --surface-bg: #ffffff;
+    --surface-border: #e5e7eb;
+    --control-bg: #ffffff;
+    --control-text: #111827;
+    --control-border: #d1d5db;
+    --button-hover: #f3f4f6;
+    --code-bg: #f9fafb;
+}
+
+html.dark {
+    color-scheme: dark;
+    --page-bg: #111827;
+    --page-text: #f9fafb;
+    --muted-text: #e5e7eb;
+    --surface-bg: #1f2937;
+    --surface-border: #374151;
+    --control-bg: #374151;
+    --control-text: #f9fafb;
+    --control-border: #4b5563;
+    --button-hover: #374151;
+    --code-bg: #111827;
+}
+
+body {
+    background-color: var(--page-bg);
+    color: var(--page-text);
+}
+
+.theme-text {
+    color: var(--page-text);
+}
+
+.theme-muted {
+    color: var(--muted-text);
+}
+
+.card {
+    background-color: var(--surface-bg);
+    border-color: var(--surface-border);
+}
+
+.theme-button {
+    border-color: var(--surface-border);
+    color: var(--page-text);
+}
+
+.theme-button:hover {
+    background-color: var(--button-hover);
+}
+
+.form-control,
+.cookie-output {
+    background-color: var(--control-bg);
+    border-color: var(--control-border);
+    color: var(--control-text);
+}
+
+.cookie-output {
+    background-color: var(--code-bg);
+}
