@@ -311,6 +311,7 @@ function loadTrack(index) {
     const track = tracks[currentTrackIndex];
 
     // TODO: オーディオのsrcを設定
+    audio.src = track.src
 
     trackTitle.textContent = track.title;
     trackArtist.textContent = track.artist;
@@ -355,8 +356,9 @@ function playAudio() {
     if (audioContext?.state === 'suspended') {
         audioContext.resume();
     }
-
+    
     // TODO: オーディオを再生: play()
+    audio.play()
 }
 
 // オーディオの一時停止
