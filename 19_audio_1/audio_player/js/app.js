@@ -484,16 +484,16 @@ repeatBtn.addEventListener('click', () => {
 });
 
 // TODO: オーディオ再生イベント
-// audio.addEventListener('play', () => {
-//     playBtn.textContent = 'Ⅱ';
-//     startVisualizer();
-// });
+audio.addEventListener('play', () => {
+    playBtn.textContent = 'Ⅱ';
+    startVisualizer();
+});
 
 // TODO: オーディオ一時停止イベント
-// audio.addEventListener('pause', () => {
-//     playBtn.textContent = '▶';
-//     stopVisualizer();
-// });
+audio.addEventListener('pause', () => {
+    playBtn.textContent = '▶';
+    stopVisualizer();
+});
 
 // TODO: オーディオのメタデータが読み込み完了イベント
 // audio.addEventListener('loadedmetadata', () => {
