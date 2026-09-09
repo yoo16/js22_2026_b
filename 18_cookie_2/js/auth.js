@@ -42,7 +42,7 @@
                 ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}),
             },
             // TODO: セッションCookie(sid)を送れるよう credentials を設定する
-            credentials: "omit",
+            credentials: "same-origin",
             body: JSON.stringify(body),
         });
         let data = await res.json();
