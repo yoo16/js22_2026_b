@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 770" font-family="'Hiragino Sans', 'Yu Gothic', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"></path>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="920" height="770" fill="#ffffff"></rect>
+
+  <!-- Banner -->
+  <rect x="40" y="16" width="840" height="44" rx="8" fill="#f1f5f9" stroke="#cbd5e1"></rect>
+  <text x="460" y="43" text-anchor="middle" font-size="15" font-weight="700" fill="#0f172a">
+    ブラウザで login.html を開く（js/auth.js が読み込まれる）
+  </text>
+
+  <!-- Lane labels -->
+  <text x="55" y="82" font-size="14" font-weight="700" fill="#334155">ブラウザ（login.html / auth.js）</text>
+  <text x="550" y="82" font-size="14" font-weight="700" fill="#334155">サーバー（PHP API）</text>
+
+  <!-- Lane backgrounds -->
+  <rect x="40" y="92" width="345" height="596" rx="10" fill="#f8fafc" stroke="#e2e8f0"></rect>
+  <rect x="550" y="92" width="330" height="596" rx="10" fill="#f8fafc" stroke="#e2e8f0"></rect>
+
+  <!-- Row 1: csrf.php -->
+  <circle cx="25" cy="163" r="14" fill="#64748b"></circle>
+  <text x="25" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1</text>
+
+  <rect x="55" y="105" width="315" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <text x="69" y="129" font-size="13" font-weight="700" fill="#0f172a">ページを開く</text>
+  <text x="69" y="150" font-size="12" fill="#475569">auth.js が initCsrf() を自動実行</text>
+
+  <line x1="372" y1="163" x2="546" y2="163" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"></line>
+  <text x="459" y="153" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">GET /api/csrf.php</text>
+
+  <rect x="550" y="105" width="330" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <rect x="550" y="105" width="6" height="116" rx="3" fill="#94a3b8"></rect>
+  <text x="569" y="129" font-size="13" font-weight="700" fill="#334155">csrf.php</text>
+  <text x="569" y="150" font-size="12" fill="#475569">セッションを開始し、CSRFトークンを発行</text>
+  <text x="569" y="170" font-size="12" fill="#475569">Set-Cookie: sid（HttpOnly）</text>
+
+  <!-- Row 2: login.php -->
+  <circle cx="25" cy="313" r="14" fill="#0284c7"></circle>
+  <text x="25" y="318" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2</text>
+
+  <rect x="55" y="255" width="315" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <text x="69" y="279" font-size="13" font-weight="700" fill="#0f172a">「Login」をクリック</text>
+  <text x="69" y="300" font-size="12" fill="#475569">email / password を送信</text>
+  <text x="69" y="319" font-size="12" fill="#475569">Header: X-CSRF-Token を付与</text>
+
+  <line x1="372" y1="313" x2="546" y2="313" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"></line>
+  <text x="459" y="303" text-anchor="middle" font-size="12" font-weight="700" fill="#0284c7">POST /api/login.php</text>
+
+  <rect x="550" y="255" width="330" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <rect x="550" y="255" width="6" height="116" rx="3" fill="#0284c7"></rect>
+  <text x="569" y="279" font-size="13" font-weight="700" fill="#0284c7">login.php</text>
+  <text x="569" y="300" font-size="12" fill="#475569">CSRFトークンを検証 → 認証成功</text>
+  <text x="569" y="319" font-size="12" fill="#475569">session_regenerate_id() で sid を再発行</text>
+  <text x="569" y="338" font-size="12" fill="#475569">新しい CSRFトークンを発行</text>
+
+  <!-- Row 3: me.php -->
+  <circle cx="25" cy="463" r="14" fill="#64748b"></circle>
+  <text x="25" y="468" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3</text>
+
+  <rect x="55" y="405" width="315" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <text x="69" y="429" font-size="13" font-weight="700" fill="#0f172a">「/me」をクリック</text>
+  <text x="69" y="450" font-size="12" fill="#475569">Cookie(sid) だけを送信</text>
+  <text x="69" y="469" font-size="12" fill="#475569">CSRFトークンは付けない</text>
+
+  <line x1="372" y1="463" x2="546" y2="463" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"></line>
+  <text x="459" y="453" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">GET /api/me.php</text>
+
+  <rect x="550" y="405" width="330" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <rect x="550" y="405" width="6" height="116" rx="3" fill="#94a3b8"></rect>
+  <text x="569" y="429" font-size="13" font-weight="700" fill="#334155">me.php</text>
+  <text x="569" y="450" font-size="12" fill="#475569">Cookie(sid) のセッションだけで認証を確認</text>
+  <text x="569" y="469" font-size="12" fill="#475569">GET は状態を変更しないのでCSRF検証は不要</text>
+
+  <!-- Row 4: logout.php -->
+  <circle cx="25" cy="613" r="14" fill="#e11d48"></circle>
+  <text x="25" y="618" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4</text>
+
+  <rect x="55" y="555" width="315" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <text x="69" y="579" font-size="13" font-weight="700" fill="#0f172a">「Logout」をクリック</text>
+  <text x="69" y="600" font-size="12" fill="#475569">Cookie(sid) を送信</text>
+  <text x="69" y="619" font-size="12" fill="#475569">Header: X-CSRF-Token を付与</text>
+
+  <line x1="372" y1="613" x2="546" y2="613" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"></line>
+  <text x="459" y="603" text-anchor="middle" font-size="12" font-weight="700" fill="#e11d48">POST /api/logout.php</text>
+
+  <rect x="550" y="555" width="330" height="116" rx="10" fill="#ffffff" stroke="#cbd5e1"></rect>
+  <rect x="550" y="555" width="6" height="116" rx="3" fill="#e11d48"></rect>
+  <text x="569" y="579" font-size="13" font-weight="700" fill="#e11d48">logout.php</text>
+  <text x="569" y="600" font-size="12" fill="#475569">CSRFトークンを検証 → セッションを破棄</text>
+  <text x="569" y="619" font-size="12" fill="#475569">Cookie(sid) を失効させる</text>
+
+  <!-- Legend -->
+  <rect x="55" y="700" width="14" height="14" rx="3" fill="#0284c7"></rect>
+  <text x="75" y="711" font-size="12" fill="#334155">ログイン（セッションIDを再発行）</text>
+
+  <rect x="330" y="700" width="14" height="14" rx="3" fill="#64748b"></rect>
+  <text x="350" y="711" font-size="12" fill="#334155">読み取り専用（CSRF検証なし）</text>
+
+  <rect x="600" y="700" width="14" height="14" rx="3" fill="#e11d48"></rect>
+  <text x="620" y="711" font-size="12" fill="#334155">ログアウト（セッションを破棄）</text>
+
+  <text x="55" y="742" font-size="12" fill="#64748b">
+    ※ すべてのリクエストで Cookie: sid（HttpOnly）が自動送信されます。CSRFトークンは状態を変更するリクエスト（POST）にのみ必要です。
+  </text>
+</svg>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mini Cookie Auth</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body class="bg-slate-100 text-slate-800 antialiased">
+    <main id="main" class="px-4 py-8 sm:px-6 lg:px-8">
+        <nav class="mx-auto mb-4 flex w-full max-w-6xl gap-2 text-sm">
+            <a href="login.html"
+                class="rounded-lg bg-sky-600 px-3 py-1.5 font-medium text-white shadow-sm">Cookie + セッション 認証</a>
+            <a href="steal.html"
+                class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-sm transition hover:bg-slate-50">XSS
+                Cookie Lab</a>
+            <a href="refleak.html"
+                class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-sm transition hover:bg-slate-50">Referer
+                漏えい Lab</a>
+        </nav>
+        <div class="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <section class="space-y-2">
+
+                <div class="min-w-0 space-y-2 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                    <label class="block text-sm font-medium text-slate-700">レスポンス</label>
+                    <pre id="out"
+                        class="h-80 max-w-full overflow-auto whitespace-pre rounded-lg border border-slate-200 bg-slate-950 p-4 text-xs leading-relaxed text-slate-100 shadow-inner"></pre>
+                </div>
+
+                <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                    <p class="font-semibold text-slate-900">CSRFトークン</p>
+                    <span id="csrf-token" class="my-1 block break-all text-xs text-slate-500"></span>
+                    <p for="csrf-token" class="block text-sm font-medium text-slate-700">
+                        バックエンドで発行されたトークンを、フォームから送信
+                    </p>
+                </div>
+
+                <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                    <button id="show-cookie"
+                        class="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
+                        Cookie取得
+                    </button>
+                    <p id="cookie-view" class="py-2 break-all font-mono text-xs text-slate-600"></p>
+                </div>
+
+                <div class="grid gap-3 text-sm sm:grid-cols-3 lg:grid-cols-1">
+                    <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <p class="font-semibold text-slate-900">Cookie ステータス</p>
+                        <p class="mt-1 flex items-center gap-2 text-slate-600">
+                            sid:
+                            <span id="cookie-status"
+                                class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">未確認</span>
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <p class="font-semibold text-slate-900">Session ステータス</p>
+                        <p class="mt-1 flex items-center gap-2 text-slate-600">
+                            認証状態:
+                            <span id="session-status"
+                                class="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">未確認</span>
+                        </p>
+                    </div>
+                    <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <p class="font-semibold text-slate-900">Fetch credentials 設定</p>
+                        <label for="credentials-select" class="mt-1 block text-xs text-slate-500">Login / Logout /
+                            /me で使う fetch() の credentials</label>
+                        <select id="credentials-select"
+                            class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-700">
+                            <option value="omit">omit（Cookieを送らない）</option>
+                            <option value="same-origin">same-origin（同一オリジンのみ送る）</option>
+                            <option value="include" selected>include（別オリジンでも送る）</option>
+                        </select>
+                        <p id="credentials-status" class="mt-2 text-xs text-slate-500"></p>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/70">
+                <div class="border-b border-slate-200 px-6 py-5">
+                    <div class="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                            <h2 class="text-xl font-semibold tracking-tight text-slate-950">Sign in (PHP x JavaScript)</h2>
+                        </div>
+                        <span
+                            class="inline-flex w-fit rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">CSRF
+                            ready</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6 p-6">
+                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p class="font-semibold text-slate-900">使い方の流れ</p>
+                        <ol class="mt-2 list-decimal space-y-1.5 pl-5 text-slate-600">
+                            <li>ページを開くと、左の「CSRFトークン」欄に自動でトークンが発行される</li>
+                            <li>下のフォームにメールアドレス・パスワードを入力し「Login」を押す</li>
+                            <li>ログイン成功で、サーバー側のセッションIDが再発行され、CSRFトークンも更新される</li>
+                            <li>「document.cookie を確認」を押し、セッションID（sid）がJavaScriptから見えないこと（HttpOnly）を確かめる</li>
+                            <li>「/me」を押し、Cookieのセッションだけでログイン中のユーザー情報が取得できることを確かめる</li>
+                            <li>「Logout」を押すとセッションが破棄され、以後「/me」を押すと401になることを確かめる</li>
+                        </ol>
+                    </div>
+
+                    <div class="grid gap-5 lg:grid-cols-2">
+                        <div class="space-y-2">
+                            <label for="email" class="block text-sm font-medium text-slate-700">メールアドレス</label>
+                            <input id="email" type="email" placeholder="email" value="test@test.com"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-950 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
+                                autocomplete="username" />
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="password" class="block text-sm font-medium text-slate-700">パスワード</label>
+                            <input id="password" type="password" placeholder="password" value="secret123"
+                                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-slate-950 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
+                                autocomplete="current-password" />
+                        </div>
+                    </div>
+
+                    <div class="grid gap-3 sm:grid-cols-[1fr_auto_auto]">
+                        <button id="login"
+                            class="inline-flex min-h-11 items-center justify-center rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-600/20 transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-100">
+                            Login
+                        </button>
+                        <button id="me"
+                            class="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-100">
+                            /me
+                        </button>
+                        <button id="logout"
+                            class="inline-flex min-h-11 items-center justify-center rounded-lg border border-rose-200 bg-rose-50 px-5 py-2 text-sm font-medium text-rose-700 transition hover:bg-rose-100 focus:outline-none focus:ring-4 focus:ring-rose-100">
+                            Logout
+                        </button>
+                    </div>
+
+                    <div id="form-message" class="hidden rounded-lg border p-3 text-sm" role="status"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 分離したJS（そのまま） -->
+    <script src="./js/auth.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mini Cookie Auth</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body class="bg-slate-100 text-slate-800 antialiased">
+    <main id="main" class="px-4 py-8 sm:px-6 lg:px-8">
+        <nav class="mx-auto mb-4 flex w-full max-w-6xl gap-2 text-sm">
+            <a href="login.html"
+                class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-sm transition hover:bg-slate-50">Cookie
+                + セッション 認証</a>
+            <a href="steal.html"
+                class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-sm transition hover:bg-slate-50">XSS
+                Cookie Lab</a>
+            <a href="refleak.html" class="rounded-lg bg-amber-600 px-3 py-1.5 font-medium text-white shadow-sm">Referer
+                漏えい Lab</a>
+        </nav>
+
+        <div class="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <section class="space-y-2">
+
+                <div class="min-w-0 space-y-2 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                    <label class="block text-sm font-medium text-slate-700">発行されたURL</label>
+                    <p id="issued-url" class="min-h-5 break-all font-mono text-xs text-slate-600">（まだ発行していません）</p>
+                </div>
+
+                <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                    <p class="font-semibold text-slate-900">URLセッションID方式とは</p>
+                    <p class="mt-1 text-slate-600">Cookieの代わりに、URLのクエリ文字列にセッションIDを載せて画面遷移する実装方式</p>
+                </div>
+
+                <div class="grid gap-3 text-sm sm:grid-cols-3 lg:grid-cols-1">
+                    <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <p class="font-semibold text-slate-900">Referer</p>
+                        <p class="mt-1 text-slate-600">リンクをクリックした際、遷移元ページのURLがそのまま送信先に伝わるHTTPヘッダー</p>
+                    </div>
+                    <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <p class="font-semibold text-slate-900">漏えい経路</p>
+                        <p class="mt-1 text-slate-600">外部サイトへのリンクや広告バナーをクリックしただけで、URL中のセッションIDが漏れる</p>
+                    </div>
+                    <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <p class="font-semibold text-slate-900">対策</p>
+                        <p class="mt-1 text-slate-600">セッションIDはURLではなく、HttpOnly Cookieで持ち回る（login.htmlの方式）</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/70">
+                <div class="border-b border-slate-200 px-6 py-5">
+                    <div class="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500">Unsafe pattern</p>
+                            <h2 class="text-xl font-semibold tracking-tight text-slate-950">Referer 漏えい Lab</h2>
+                        </div>
+                        <span
+                            class="inline-flex w-fit rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">URL
+                            session ID</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6 p-6">
+                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p class="font-semibold text-slate-900">使い方の流れ</p>
+                        <ol class="mt-2 list-decimal space-y-1.5 pl-5 text-slate-600">
+                            <li>「① セッションを開始する」を押すと、セッションIDを含むURLに移動する</li>
+                            <li>アドレスバーに <span class="font-mono text-xs">?leaksid=...</span> が付いていることを確認する</li>
+                            <li>「② 外部サイト（広告）へのリンクを開く」を押す（別タブが開きます）</li>
+                            <li>開いた外部サイトのページで、受け取った Referer ヘッダーを確認する</li>
+                            <li>Referer にこのページの URL（＝セッションID）がそのまま含まれていることを確認する</li>
+                        </ol>
+                    </div>
+
+                    <div class="space-y-2">
+                        <button id="start-session"
+                            class="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-200">
+                            ① セッションを開始する（URLにIDを付与）
+                        </button>
+                        <a id="external-link" href="api/external.php" target="_blank"
+                            class="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-amber-200 bg-amber-50 px-5 py-2.5 text-sm font-medium text-amber-700 transition hover:bg-amber-100 focus:outline-none focus:ring-4 focus:ring-amber-100">
+                            ② 外部サイト（広告）へのリンクを開く
+                        </a>
+                    </div>
+
+                    <div class="min-w-0 space-y-2">
+                        <label class="block text-sm font-medium text-slate-700">レスポンス</label>
+                        <pre id="out"
+                            class="h-64 max-w-full overflow-auto whitespace-pre rounded-lg border border-slate-200 bg-slate-950 p-4 text-xs leading-relaxed text-slate-100 shadow-inner"></pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 分離したJS（そのまま） -->
+    <script src="./js/refleak.js" defer></script>
+</body>
+
+</html>
