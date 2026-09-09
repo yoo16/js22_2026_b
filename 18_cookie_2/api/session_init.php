@@ -6,7 +6,7 @@ session_set_cookie_params([
     'secure'   => false, // 本番は true
     // TODO: false のままだと JavaScript の document.cookie から sid が読み書きできてしまう。
     //       XSSで盗まれないよう、JSからアクセスできないようにする値へ修正する
-    'httponly' => false,
+    'httponly' => true,
     'samesite' => 'Lax',
 ]);
 session_start();
