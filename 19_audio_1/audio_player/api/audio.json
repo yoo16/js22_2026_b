@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Music 1",
+        "artist": "Artist 1",
+        "src": "../audio/music1.mp3"
+    },
+    {
+        "title": "Music 2",
+        "artist": "Artist 2",
+        "src": "../audio/music2.mp3"
+    },
+    {
+        "title": "Music 3",
+        "artist": "Artist 3",
+        "src": "../audio/music3.mp3"
+    }
+]
