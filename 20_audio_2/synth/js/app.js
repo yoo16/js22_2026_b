@@ -49,8 +49,8 @@ let octaveShift = 0;
  */
 function midiToFrequency(midi) {
     // TODO: 正しい周波数計算を実装する
-    return 440
-    // return 440 * (2 ** ((midi - 69) / 12));
+    // return 440
+    return 440 * (2 ** ((midi - 69) / 12));
 }
 
 /**
@@ -137,9 +137,9 @@ function ensureAudioGraph() {
     masterGainNode.gain.value = Number(masterVolumeSlider.value) / 100;
 
     // TODO: ノードを接続する順序を確認: フィルター → アンプ → マスター → 出力
-    // filterNode.connect(ampGainNode);
-    // ampGainNode.connect(masterGainNode);
-    // masterGainNode.connect(audioContext.destination);
+    filterNode.connect(ampGainNode);
+    ampGainNode.connect(masterGainNode);
+    masterGainNode.connect(audioContext.destination);
 
     // メインオシレーター（常時発振させておき、周波数だけ動かしてポルタメントを実現）
     mainOscillator = audioContext.createOscillator();
@@ -321,7 +321,7 @@ window.addEventListener('keyup', (event) => {
 // パラメーター変更のハンドリング
 waveformSelect.addEventListener('change', () => {
     // TODO: オシレーターの波形を変更
-    // if (mainOscillator) mainOscillator.type = waveformSelect.value;
+    if (mainOscillator) mainOscillator.type = waveformSelect.value;
 });
 
 subOscCheckbox.addEventListener('change', () => {
@@ -330,7 +330,7 @@ subOscCheckbox.addEventListener('change', () => {
 
 masterVolumeSlider.addEventListener('input', () => {
     // TODO: マスターボリュームを反映
-    // if (masterGainNode) masterGainNode.gain.value = Number(masterVolumeSlider.value) / 100;
+    if (masterGainNode) masterGainNode.gain.value = Number(masterVolumeSlider.value) / 100;
 });
 
 const sliderDisplays = [
