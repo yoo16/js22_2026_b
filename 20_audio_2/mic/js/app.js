@@ -91,7 +91,7 @@ async function startRecording() {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
         // MediaStream からオーディオソースノードを生成: createMediaStreamSource()
-        const source = null;
+        const source = audioContext.createMediaStreamSource(stream);
 
         // AnalyserNode を作成して FFT サイズを設定
         analyser = audioContext.createAnalyser();
