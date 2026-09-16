@@ -462,14 +462,14 @@ nextBtn.addEventListener('click', nextTrack);
 progressBar.addEventListener('input', seekAudio);
 
 // TODO: 音量バーイベント
-// volumeBar.addEventListener('input', (event) => {
-//     audio.volume = Number(event.target.value);
-// });
+volumeBar.addEventListener('input', (event) => {
+    audio.volume = Number(event.target.value);
+});
 
 // TODO: 速度セレクトイベント
-// speedSelect.addEventListener('change', (event) => {
-//     audio.playbackRate = Number(event.target.value);
-// });
+speedSelect.addEventListener('change', (event) => {
+    audio.playbackRate = Number(event.target.value);
+});
 
 // シャッフルボタンイベント
 shuffleBtn.addEventListener('click', () => {
@@ -496,12 +496,12 @@ audio.addEventListener('pause', () => {
 });
 
 // TODO: オーディオのメタデータが読み込み完了イベント
-// audio.addEventListener('loadedmetadata', () => {
-//     duration.textContent = formatTime(audio.duration);
-// });
+audio.addEventListener('loadedmetadata', () => {
+    duration.textContent = formatTime(audio.duration);
+});
 
 // TODO: オーディオのタイム更新イベント
-// audio.addEventListener('timeupdate', updateProgress);
+audio.addEventListener('timeupdate', updateProgress);
 
 // オーディオの再生終了イベント
 audio.addEventListener('ended', () => {
