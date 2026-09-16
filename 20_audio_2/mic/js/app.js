@@ -84,11 +84,11 @@ function updateRecordButton() {
 async function startRecording() {
     try {
         // TODO: メディアストリーム取得
-        const stream = null;
-        // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // const stream = null;
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
         // TODO: オーディオコンテキストの作成: new AudioContext() または window.webkitAudioContext()
-        audioContext = null;
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
         // MediaStream からオーディオソースノードを生成: createMediaStreamSource()
         const source = null;
