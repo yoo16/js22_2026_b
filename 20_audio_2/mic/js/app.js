@@ -122,6 +122,7 @@ async function startRecording() {
         mediaRecorder.addEventListener('dataavailable', (event) => {
             if (event.data.size > 0) {
                 // TODO: 録音データを配列に追加: event.data
+                recordedChunks.push(event.data);
             }
         });
         // 録音停止のイベントリスナーを設定
