@@ -65,11 +65,11 @@ function midiToNoteName(midi) {
 
 function updateOctaveDisplay() {
     // TODO: オクターブを更新
-    // const lowest = WHITE_NOTES[0] + octaveShift * 12;
-    // const highest = WHITE_NOTES[WHITE_NOTES.length - 1] + octaveShift * 12;
-    // octaveRangeEl.textContent = `${midiToNoteName(lowest)} – ${midiToNoteName(highest)}`;
-    // octaveDownBtn.disabled = octaveShift <= OCTAVE_SHIFT_MIN;
-    // octaveUpBtn.disabled = octaveShift >= OCTAVE_SHIFT_MAX;
+    const lowest = WHITE_NOTES[0] + octaveShift * 12;
+    const highest = WHITE_NOTES[WHITE_NOTES.length - 1] + octaveShift * 12;
+    octaveRangeEl.textContent = `${midiToNoteName(lowest)} – ${midiToNoteName(highest)}`;
+    octaveDownBtn.disabled = octaveShift <= OCTAVE_SHIFT_MIN;
+    octaveUpBtn.disabled = octaveShift >= OCTAVE_SHIFT_MAX;
 }
 
 function shiftOctave(delta) {
