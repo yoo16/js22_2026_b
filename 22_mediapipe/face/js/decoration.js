@@ -218,6 +218,7 @@ function updatemesh() {
     // 顔の傾き処理
     const quaternion = calculateNormalVector();
     // TODO: スタンプの回転: three.js のクォータニオンを使用: mesh.quaternion.copy(quaternion)
+    mesh.quaternion.copy(quaternion);
 
     // スタンプの位置
     const settings = faceImages[currentFaceImage];
@@ -227,25 +228,25 @@ function updatemesh() {
     // 鼻の位置
     const position = landmark[settings.point];
     // TODO: 顔の中心位置を計算
-    // const faceCenter = new THREE.Vector3(
-    //     position.x + positionX + settings.dx,
-    //     position.y + positionY + settings.dy,
-    //     position.z - zOffset,
-    // );
+    const faceCenter = new THREE.Vector3(
+        position.x + positionX + settings.dx,
+        position.y + positionY + settings.dy,
+        position.z - zOffset,
+    );
 
     // 鼻のY座標の中間点を計算
     // TODO: 左鼻の座標: landmark[279]
-    const leftNose = { x: 0, y: 0, z: 0 };
+    const leftNose = landmark[279];
     // TODO: 右鼻の座標: landmark[49]
-    const rightNose = { x: 0, y: 0, z: 0 };
+    const rightNose = landmark[49];
     // TODO: 左右の鼻のY座標の中間点を計算
-    const noseYMidpoint = 0;
+    const noseYMidpoint = (leftNose.y + rightNose.y) / 2;
 
     // TODO: 鼻のY座標の中間点に位置を調整
-    // faceCenter.y = noseYMidpoint + settings.dy;
+    faceCenter.y = noseYMidpoint + settings.dy;
 
     // TODO: デコレーションを適切に配置
-    // mesh.position.copy(faceCenter);
+    mesh.position.copy(faceCenter);
 }
 
 
@@ -279,9 +280,9 @@ function calculateNormalVector() {
         .normalize();
 
     // TODO: クォータニオンを作成
-    // const quaternion = new THREE.Quaternion();
-    // quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), faceNormalVector);
-    // return quaternion;
+    const quaternion = new THREE.Quaternion();
+    quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), faceNormalVector);
+    return quaternion;
 }
 
 /**
