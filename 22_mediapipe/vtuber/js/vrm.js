@@ -29,13 +29,13 @@ export async function loadVRM(file) {
 
   try {
     // TODO: GLTF ファイルを読み込む: await loader.loadAsync(objectUrl)
-    // const gltf = await loader.loadAsync(objectUrl);
-    // const vrm = gltf.userData.vrm;
-    // if (!vrm) {
-    //   throw new Error('VRMデータが見つかりません。');
-    // }
-    // VRMUtils.removeUnnecessaryVertices(gltf.scene);
-    // return vrm;
+    const gltf = await loader.loadAsync(objectUrl);
+    const vrm = gltf.userData.vrm;
+    if (!vrm) {
+      throw new Error('VRMデータが見つかりません。');
+    }
+    VRMUtils.removeUnnecessaryVertices(gltf.scene);
+    return vrm;
   } finally {
     URL.revokeObjectURL(objectUrl);
   }
