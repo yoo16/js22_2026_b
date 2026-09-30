@@ -70,15 +70,15 @@ export async function createFaceDetector() {
   // 頭のキャリブレーションを開始
   const vision = await FilesetResolver.forVisionTasks(MEDIAPIPE_WASM_BASE);
   // TODO: FaceLandmarker で顔ランドマークを検出インスタンス
-  // return FaceLandmarker.createFromOptions(vision, {
-  //   baseOptions: {
-  //     modelAssetPath: MEDIAPIPE_MODEL_ASSET,
-  //   },
-  //   numFaces: 1,
-  //   runningMode: 'VIDEO',
-  //   outputFaceBlendshapes: false,
-  //   outputFacialTransformationMatrixes: false,
-  // });
+  return FaceLandmarker.createFromOptions(vision, {
+    baseOptions: {
+      modelAssetPath: MEDIAPIPE_MODEL_ASSET,
+    },
+    numFaces: 1,
+    runningMode: 'VIDEO',
+    outputFaceBlendshapes: false,
+    outputFacialTransformationMatrixes: false,
+  });
 }
 
 // カメラ映像のストリーム
