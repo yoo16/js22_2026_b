@@ -166,7 +166,7 @@ function loadImages() {
             done();
         };
         // TODO: 画像のパスを設定
-        // img.src = `images/${name}.png`;
+        img.src = `images/${name}.png`;
     });
 }
 
