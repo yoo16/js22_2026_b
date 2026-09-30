@@ -41,15 +41,15 @@ function uniqueIndices(part) {
 // UI 構築
 function buildPartButtons() {
     // TODO: 部位ボタンを生成
-    // Object.keys(landmarkParts).forEach((key) => {
-    //     const btn = document.createElement('button');
-    //     btn.type = 'button';
-    //     btn.dataset.part = key;
-    //     btn.textContent = PART_LABELS[key] ?? key;
-    //     btn.className = baseChipClass(false);
-    //     btn.addEventListener('click', () => selectPart(key));
-    //     partButtonsEl.appendChild(btn);
-    // });
+    Object.keys(landmarkParts).forEach((key) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.part = key;
+        btn.textContent = PART_LABELS[key] ?? key;
+        btn.className = baseChipClass(false);
+        btn.addEventListener('click', () => selectPart(key));
+        partButtonsEl.appendChild(btn);
+    });
 }
 
 function baseChipClass(active) {
