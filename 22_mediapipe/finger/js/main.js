@@ -73,36 +73,36 @@ function drawHands(hands) {
         const pts = hand.keypoints.map(toCanvas);
 
         // TODO: 骨格の描画
-        // if (showSkeleton) {
-        //     ctx.strokeStyle = color;
-        //     ctx.lineWidth = 3;
-        //     ctx.beginPath();
-        //     HAND_CONNECTIONS.forEach(([a, b]) => {
-        //         ctx.moveTo(pts[a].x, pts[a].y);
-        //         ctx.lineTo(pts[b].x, pts[b].y);
-        //     });
-        //     ctx.stroke();
-        // }
+        if (showSkeleton) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            HAND_CONNECTIONS.forEach(([a, b]) => {
+                ctx.moveTo(pts[a].x, pts[a].y);
+                ctx.lineTo(pts[b].x, pts[b].y);
+            });
+            ctx.stroke();
+        }
 
         // TODO: 関節の描画
-        // pts.forEach((p, index) => {
-        //     ctx.beginPath();
-        //     ctx.arc(p.x, p.y, index === 0 ? 6 : 4, 0, 2 * Math.PI);
-        //     ctx.fillStyle = '#fff';
-        //     ctx.fill();
-        //     ctx.lineWidth = 2;
-        //     ctx.strokeStyle = color;
-        //     ctx.stroke();
+        pts.forEach((p, index) => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, index === 0 ? 6 : 4, 0, 2 * Math.PI);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = color;
+            ctx.stroke();
 
-        //     if (showIndices) {
-        //         const label = String(index);
-        //         ctx.fillStyle = 'rgba(15,23,42,0.75)';
-        //         const w = ctx.measureText(label).width + 6;
-        //         ctx.fillRect(p.x + 6, p.y - 8, w, 16);
-        //         ctx.fillStyle = '#fff';
-        //         ctx.fillText(label, p.x + 9, p.y);
-        //     }
-        // });
+            if (showIndices) {
+                const label = String(index);
+                ctx.fillStyle = 'rgba(15,23,42,0.75)';
+                const w = ctx.measureText(label).width + 6;
+                ctx.fillRect(p.x + 6, p.y - 8, w, 16);
+                ctx.fillStyle = '#fff';
+                ctx.fillText(label, p.x + 9, p.y);
+            }
+        });
     });
 }
 
@@ -174,7 +174,7 @@ function render() {
     // タイムスタンプ
     const timestamp = performance.now();
     // TODO: 手のランドマークを推定: estimateHands(): 引数: landmarker, videoEl, timestamp
-    const hands = {};
+    const hands = estimateHands(landmarker, videoEl, timestamp);
     // 手のランドマークの描画
     drawHands(hands);
     // 手の詳細情報の描画
