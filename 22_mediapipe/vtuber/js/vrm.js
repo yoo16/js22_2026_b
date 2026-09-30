@@ -68,14 +68,14 @@ export function applyTrackingToVRM(vrm, frame) {
   }
 
   // TODO: 頭のボーンを取得: vrm.humanoid.getNormalizedBoneNode(VRMHumanBoneName.Head)
-  // const head = vrm.humanoid.getNormalizedBoneNode(VRMHumanBoneName.Head);
+  const head = vrm.humanoid.getNormalizedBoneNode(VRMHumanBoneName.Head);
   // 頭の回転
   if (head) {
     head.rotation.set(frame.head.pitch, frame.head.yaw, -frame.head.roll, 'XYZ');
   }
 
   // TODO: 首のボーンを取得: vrm.humanoid.getNormalizedBoneNode(VRMHumanBoneName.Neck)
-  // const neck = vrm.humanoid.getNormalizedBoneNode(VRMHumanBoneName.Neck);
+  const neck = vrm.humanoid.getNormalizedBoneNode(VRMHumanBoneName.Neck);
   // 首の回転
   if (neck) {
     neck.rotation.set(frame.head.pitch * 0.35, frame.head.yaw * 0.35, -frame.head.roll * 0.2, 'XYZ');
