@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla JS VTuber Face Tracking</title>
+    <!-- Tailwind CSS（vendor/ 内の standalone ビルドを利用）-->
+    <script src="../vendor/tailwindcss/tailwindcss.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../vendor/three/build/three.module.js",
+          "three/": "../vendor/three/",
+          "three/examples/jsm/loaders/GLTFLoader.js": "../vendor/three/examples/jsm/loaders/GLTFLoader.js",
+          "@pixiv/three-vrm": "../vendor/@pixiv/three-vrm/lib/three-vrm.module.js",
+          "@mediapipe/tasks-vision": "../vendor/@mediapipe/tasks-vision/vision_bundle.mjs"
+        }
+      }
+    </script>
+  </head>
+  <body class="m-0 min-h-screen bg-black font-sans text-neutral-100">
+    <main class="grid min-h-screen grid-cols-[minmax(0,1fr)_360px] max-[860px]:grid-cols-1">
+      <section class="relative min-h-screen overflow-hidden bg-neutral-900 max-[860px]:min-h-[62vh]">
+        <canvas id="avatar-canvas" aria-label="VRM avatar preview" class="block h-screen w-full max-[860px]:h-[62vh]"></canvas>
+        <video id="camera-video" playsinline muted
+          class="absolute bottom-5 right-5 aspect-video w-[min(28vw,320px)] -scale-x-100 border border-white/15 bg-black object-cover max-[860px]:bottom-3 max-[860px]:right-3 max-[860px]:w-[40vw] max-[860px]:min-w-[160px]"></video>
+      </section>
+
+      <aside class="flex min-w-0 flex-col gap-2 border-l border-white/10 bg-neutral-800 p-6 max-[860px]:border-l-0 max-[860px]:border-t">
+        <div>
+          <h1 class="m-0 text-xl leading-tight">VRM Face Control</h1>
+        </div>
+
+        <label class="grid gap-2 text-sm">
+          <span>VRMモデル</span>
+          <input id="vrm-file" type="file" accept=".vrm,model/gltf-binary"
+            class="w-full min-w-0 rounded-md border border-white/15 bg-neutral-900 p-2.5 text-neutral-100" />
+        </label>
+
+        <div class="flex flex-wrap gap-2 text-xs">
+          <button id="start-camera" type="button"
+            class="p-1 flex-1 rounded-md bg-neutral-200 text-neutral-900">カメラ開始</button>
+          <button id="reset-pose" type="button"
+            class="p-1 flex-1 rounded-md bg-neutral-700 text-neutral-100 ring-1 ring-inset ring-white/15">姿勢リセット</button>
+          <button id="calibrate-pose" type="button"
+            class="p-1 flex-1 rounded-md bg-neutral-700 text-neutral-100 ring-1 ring-inset ring-white/15">基準セット</button>
+        </div>
+
+        <div class="flex gap-2 my-2">
+          <input id="arm-tracking-toggle" type="checkbox" />
+          <label class="text-xs text-neutral-300">肩・上半身の捻り</label>
+        </div>
+
+        <dl class="m-0 grid gap-1 text-sm">
+          <div class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <dt class="text-neutral-400">Detector</dt>
+            <dd id="detector-status" class="m-0 min-w-0 overflow-hidden text-right tabular-nums text-green-400">idle</dd>
+          </div>
+          <div class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <dt class="text-neutral-400">Camera</dt>
+            <dd id="camera-status" class="m-0 min-w-0 overflow-hidden text-right tabular-nums text-green-400">idle</dd>
+          </div>
+          <div class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <dt class="text-neutral-400">Face</dt>
+            <dd id="face-status" class="m-0 min-w-0 overflow-hidden text-right tabular-nums text-green-400">not detected</dd>
+          </div>
+          <div class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <dt class="text-neutral-400">Arm</dt>
+            <dd id="arm-status" class="m-0 min-w-0 overflow-hidden text-right tabular-nums text-green-400">off</dd>
+          </div>
+        </dl>
+
+        <div class="grid gap-1">
+          <label class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <span class="text-neutral-400">Yaw</span>
+            <output id="yaw-value" class="min-w-0 text-right tabular-nums text-green-400">0.00</output>
+          </label>
+          <label class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <span class="text-neutral-400">Pitch</span>
+            <output id="pitch-value" class="min-w-0 text-right tabular-nums text-green-400">0.00</output>
+          </label>
+          <label class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <span class="text-neutral-400">Roll</span>
+            <output id="roll-value" class="min-w-0 text-right tabular-nums text-green-400">0.00</output>
+          </label>
+          <label class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <span class="text-neutral-400">Blink L/R</span>
+            <output id="blink-value" class="min-w-0 text-right tabular-nums text-green-400">0.00 / 0.00</output>
+          </label>
+          <label class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <span class="text-neutral-400">Mouth</span>
+            <output id="mouth-value" class="min-w-0 overflow-hidden text-right tabular-nums text-green-400">0.00</output>
+          </label>
+          <label class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <span class="text-neutral-400">Shoulder L/R</span>
+            <output id="shoulder-value" class="min-w-0 text-right tabular-nums text-green-400">0° / 0°</output>
+          </label>
+          <label class="flex min-w-0 items-center justify-between rounded-md border border-white/10 bg-neutral-900 p-3">
+            <span class="text-neutral-400">Twist</span>
+            <output id="twist-value" class="min-w-0 text-right tabular-nums text-green-400">0°</output>
+          </label>
+        </div>
+      </aside>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
