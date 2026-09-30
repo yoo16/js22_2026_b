@@ -82,16 +82,16 @@ export function applyTrackingToVRM(vrm, frame) {
   }
 
   // TODO: まばたきの表情: Blink は左右の大きい方、BlinkLeft / BlinkRight はそれぞれの値
-  // setExpression(vrm, VRMExpressionPresetName.Blink, Math.max(frame.eyes.leftBlink, frame.eyes.rightBlink));
-  // setExpression(vrm, VRMExpressionPresetName.BlinkLeft, frame.eyes.leftBlink);
-  // setExpression(vrm, VRMExpressionPresetName.BlinkRight, frame.eyes.rightBlink);
+  setExpression(vrm, VRMExpressionPresetName.Blink, Math.max(frame.eyes.leftBlink, frame.eyes.rightBlink));
+  setExpression(vrm, VRMExpressionPresetName.BlinkLeft, frame.eyes.leftBlink);
+  setExpression(vrm, VRMExpressionPresetName.BlinkRight, frame.eyes.rightBlink);
 
   // TODO: 口の表情: あ(Aa)・い(Ih)・う(Ou)・え(Ee)・お(Oh) に frame.mouth の値を設定
-  // setExpression(vrm, VRMExpressionPresetName.Aa, frame.mouth.aa);
-  // setExpression(vrm, VRMExpressionPresetName.Ih, frame.mouth.ih);
-  // setExpression(vrm, VRMExpressionPresetName.Ou, frame.mouth.ou);
-  // setExpression(vrm, VRMExpressionPresetName.Ee, frame.mouth.ee);
-  // setExpression(vrm, VRMExpressionPresetName.Oh, frame.mouth.oh);
+  setExpression(vrm, VRMExpressionPresetName.Aa, frame.mouth.aa);
+  setExpression(vrm, VRMExpressionPresetName.Ih, frame.mouth.ih);
+  setExpression(vrm, VRMExpressionPresetName.Ou, frame.mouth.ou);
+  setExpression(vrm, VRMExpressionPresetName.Ee, frame.mouth.ee);
+  setExpression(vrm, VRMExpressionPresetName.Oh, frame.mouth.oh);
 }
 
 // VRM のポーズをリセット
