@@ -76,18 +76,18 @@ function buildIndexList() {
     indexListEl.replaceChildren();
     const landmarks = uniqueIndices(selectedPart);
     // TODO: ランドマーク番号のボタンを生成
-    // landmarks.forEach((index) => {
-    //     const chip = document.createElement('button');
-    //     chip.type = 'button';
-    //     chip.dataset.index = String(index);
-    //     chip.textContent = index;
-    //     chip.className = indexChipClass(false);
-    //     chip.addEventListener('click', () => {
-    //         highlightIndex = highlightIndex === index ? null : index;
-    //         refreshIndexChips();
-    //     });
-    //     indexListEl.appendChild(chip);
-    // });
+    landmarks.forEach((index) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.dataset.index = String(index);
+        chip.textContent = index;
+        chip.className = indexChipClass(false);
+        chip.addEventListener('click', () => {
+            highlightIndex = highlightIndex === index ? null : index;
+            refreshIndexChips();
+        });
+        indexListEl.appendChild(chip);
+    });
 }
 
 function indexChipClass(active) {
